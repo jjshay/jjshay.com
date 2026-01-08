@@ -284,8 +284,31 @@
             padding: 20px;
         }
 
-        /* Profile image gold hover */
+        /* Profile Layout */
+        .about-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 0 0 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            padding-right: 30px;
+        }
+
         .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #D4AF37;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             transition: filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
         }
 
@@ -293,6 +316,47 @@
             filter: sepia(30%) saturate(200%) hue-rotate(10deg);
             transform: scale(1.05);
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .profile-name {
+            color: #D4AF37;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+
+        .profile-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .profile-bio {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        @media (max-width: 500px) {
+            .profile-header {
+                padding-right: 0;
+            }
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-name {
+                font-size: 16px;
+            }
+            .profile-buttons {
+                gap: 8px;
+            }
+            .profile-bio {
+                min-width: 100%;
+            }
         }
 
         /* Company logo gold hover */
@@ -2357,16 +2421,17 @@
             <!-- About Content -->
             <div id="about" class="tab-content">
                     <div class="glass-card">
-                        <div style="display: flex; align-items: flex-start; gap: 15px; padding: 0 0 20px 0; flex-wrap: wrap; justify-content: center;">
-                            <div style="flex-shrink: 0; text-align: center; padding-right: 30px;">
-                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="John (JJ) Shay" class="profile-img" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);">
-                                <h3 style="color: #D4AF37; font-size: 20px; margin-top: 15px; margin-bottom: 15px;">John (JJ) Shay</h3>
-                                <div style="display: flex; justify-content: center; gap: 15px;">
-                                    <div class="jj-linkedin-wrapper">
-                                        <a href="https://www.linkedin.com/in/jjshay/" target="_blank" class="social-link" id="jj-linkedin-link">
-                                            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                                        </a>
-                                        <div class="jj-linkedin-popup">
+                        <div class="about-layout">
+                            <div class="profile-header">
+                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="John (JJ) Shay" class="profile-img">
+                                <div class="profile-info">
+                                    <h3 class="profile-name">John (JJ) Shay</h3>
+                                    <div class="profile-buttons">
+                                        <div class="jj-linkedin-wrapper">
+                                            <a href="https://www.linkedin.com/in/jjshay/" target="_blank" class="social-link" id="jj-linkedin-link">
+                                                <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                                            </a>
+                                            <div class="jj-linkedin-popup">
                                             <div class="linkedin-popup-header">
                                                 <img src="https://gauntlet.gallery/images/js.jpeg" alt="JJ Shay" class="jj-popup-avatar">
                                                 <span class="linkedin-popup-info">
@@ -2382,13 +2447,14 @@
                                                 <span>9,000+ Followers</span>
                                             </div>
                                         </div>
+                                        </div>
+                                        <a href="mailto:js@jjshay.com" class="social-link">
+                                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                        </a>
                                     </div>
-                                    <a href="mailto:js@jjshay.com" class="social-link">
-                                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                                    </a>
                                 </div>
                             </div>
-                            <div style="flex: 1; min-width: 250px;">
+                            <div class="profile-bio">
                                 <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; text-align: left;">
                                     <strong style="color: #D4AF37;">AI strategist with 20+ years driving M&A, partnerships, and GTM</strong> across tech, healthcare, and life sciences. At <a href="https://about.google/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Google</strong></a>, <a href="https://www.fitbit.com/global/us/about-us" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Fitbit</strong></a>, <a href="https://www.intuit.com/company/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Intuit</strong></a>, and <a href="https://www.philips.com/a-w/about.html" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Philips</strong></a>, he closed <strong style="color: #D4AF37;">$4B+ in deals</strong>—including leading the <a href="https://democraticmedia.org/assets/resources/googlefitbitdeal020820.pdf" target="_blank" style="text-decoration: none;"><strong style="color: #D4AF37;">$2.1B Google-Fitbit integration</strong></a> solo against Google's 50-person team—and partnered with 50+ AI startups to bring emerging tech to market.
                                 </p>
