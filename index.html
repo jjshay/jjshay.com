@@ -1017,7 +1017,8 @@
         }
 
         .rec-author:hover .linkedin-popup,
-        .linkedin-popup:hover {
+        .linkedin-popup:hover,
+        .rec-author.active .linkedin-popup {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
@@ -2967,6 +2968,28 @@
                     });
                 });
             }
+
+            // Mobile touch support for recommendation popups
+            document.querySelectorAll('.rec-author').forEach(author => {
+                author.addEventListener('click', function(e) {
+                    // Close all other popups first
+                    document.querySelectorAll('.rec-author.active').forEach(a => {
+                        if (a !== this) a.classList.remove('active');
+                    });
+                    // Toggle this popup
+                    this.classList.toggle('active');
+                    e.stopPropagation();
+                });
+            });
+
+            // Close popup when tapping outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.rec-author')) {
+                    document.querySelectorAll('.rec-author.active').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                }
+            });
 
         });
     </script>
