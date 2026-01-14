@@ -1,0 +1,4108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XWTSF5YR8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7XWTSF5YR8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>jjshay.com</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AI Executive Insights - Expert analysis, reports, and news on artificial intelligence trends shaping business and technology.">
+    <meta name="author" content="JJ Shay">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jjshay.com/">
+    <meta property="og:title" content="AI Executive Insights | Strategy & Analysis">
+    <meta property="og:description" content="Expert analysis, reports, and news on artificial intelligence trends shaping business and technology.">
+    <meta property="og:image" content="https://jjshay.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="AI Executive Insights">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jjshay.com/">
+    <meta name="twitter:title" content="AI Executive Insights | Strategy & Analysis">
+    <meta name="twitter:description" content="Expert analysis, reports, and news on artificial intelligence trends shaping business and technology.">
+    <meta name="twitter:image" content="https://jjshay.com/og-image.png">
+    <meta name="twitter:site" content="@jjshay">
+
+    <link rel="icon" type="image/png" href="https://jjshay.com/favicon.png">
+    <link rel="apple-touch-icon" href="https://jjshay.com/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            min-height: 100vh;
+            background: #0a1628;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Page load animation */
+        .page-wrapper {
+            opacity: 1;
+        }
+
+        /* Parallax Background */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(30, 58, 95, 0.8) 0%, transparent 70%),
+                linear-gradient(180deg, #0a1628 0%, #1a2d4a 50%, #0a1628 100%);
+            z-index: 0;
+            transform: translateY(0);
+            will-change: transform;
+        }
+
+        /* Animated background orbs */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.2);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(30, 58, 138, 0.5);
+            top: 50%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: rgba(212, 175, 55, 0.15);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4px 20px;
+            min-height: 100vh;
+        }
+
+        /* Glass Card - Dark blue with gold + edge glow */
+        .glass-card {
+            background: rgba(20, 40, 80, 0.6);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 0 30px rgba(212, 175, 55, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 32px 24px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow:
+                0 16px 48px rgba(0, 0, 0, 0.4),
+                inset 0 0 40px rgba(212, 175, 55, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Horizontal Tab Bar */
+        .tab-bar {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            max-width: 100%;
+        }
+
+        .gold-tab {
+            flex: 1 1 0;
+            min-width: 0;
+            background: linear-gradient(135deg, #8B7320 0%, #A68B2A 50%, #8B7320 100%);
+            background-size: 200% 100%;
+            border: none;
+            border-right: 1px solid rgba(10, 22, 40, 0.3);
+            padding: 12px 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 1;
+        }
+
+        .gold-tab:last-child {
+            border-right: none;
+        }
+
+        .gold-tab:hover {
+            background: linear-gradient(135deg, #A68B2A 0%, #C4A030 50%, #A68B2A 100%);
+        }
+
+        .gold-tab:hover .gold-tab-icon {
+            display: none;
+        }
+
+        .gold-tab:hover .gold-tab-text {
+            display: block;
+        }
+
+        .gold-tab.active {
+            opacity: 1;
+            background: #00CED1;
+            box-shadow: inset 0 -3px 0 rgba(10, 22, 40, 0.3);
+        }
+
+        .gold-tab.active .gold-tab-icon {
+            display: none;
+        }
+
+        .gold-tab.active .gold-tab-text {
+            display: block;
+            color: #ffffff;
+            text-shadow: none;
+        }
+
+        .gold-tab-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .gold-tab-text {
+            display: none;
+            font-size: 13px;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .gold-tab::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content .glass-card {
+            margin-bottom: 0;
+        }
+
+        /* Tab content consistent spacing */
+        #news .glass-card,
+        #briefs .glass-card,
+        #reports .glass-card,
+        #about .glass-card {
+            padding: 20px;
+        }
+
+        /* Profile Layout */
+        .about-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 0 0 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            padding-right: 30px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #D4AF37;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-img:hover {
+            filter: sepia(30%) saturate(200%) hue-rotate(10deg);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .profile-name {
+            color: #D4AF37;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+
+        .profile-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .profile-bio {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        @media (max-width: 500px) {
+            .profile-header {
+                width: 100%;
+                padding: 0 15px;
+                justify-content: space-between;
+                gap: 15px;
+            }
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-info {
+                flex: 1;
+                align-items: flex-end;
+                text-align: right;
+            }
+            .profile-name {
+                font-size: 16px;
+            }
+            .profile-buttons {
+                gap: 8px;
+            }
+            .profile-bio {
+                min-width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+        /* Company logo gold hover */
+        .company-logo {
+            transition: filter 0.3s ease, transform 0.3s ease;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        .company-logo:hover {
+            filter: brightness(0) invert(1) sepia(100%) saturate(500%) hue-rotate(10deg);
+            transform: scale(1.8);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Company logo sizes */
+        .company-logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: nowrap;
+            margin-bottom: 0;
+        }
+        .logo-google { height: 22px; }
+        .logo-fitbit { height: 18px; }
+        .logo-intuit { height: 18px; }
+        .logo-philips { height: 14px; }
+        .logo-babson { height: 43px; }
+        .logo-harvard { height: 43px; }
+        .logo-mit { height: 36px; }
+        .logo-stanford { height: 43px; }
+
+        @media (max-width: 600px) {
+            .company-logos-row {
+                gap: 20px;
+                margin-bottom: 0 !important;
+                width: 100%;
+                justify-content: space-between;
+                padding: 0 5px;
+            }
+            .logo-google { height: 22px; }
+            .logo-fitbit { height: 17px; }
+            .logo-intuit { height: 17px; }
+            .logo-philips { height: 14px; }
+            .logo-babson { height: 41px; }
+            .logo-harvard { height: 41px; }
+            .logo-mit { height: 34px; }
+            .logo-stanford { height: 41px; }
+            .linkedin-recs-section {
+                margin-top: 6px !important;
+                padding-top: 6px !important;
+            }
+        }
+
+        /* Reports Section - Swipeable */
+        .reports-grid {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 rgba(212, 175, 55, 0.1);
+        }
+
+        .reports-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .reports-grid::-webkit-scrollbar-track {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 3px;
+        }
+
+        .reports-grid::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        .report-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(0, 206, 209, 0.2);
+            border-radius: 16px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: visible;
+            opacity: 0.7;
+            filter: saturate(0.8) brightness(0.9);
+        }
+
+        .report-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #D4AF37;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 45px;
+            transform: rotate(45deg);
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .report-card:hover {
+            transform: translateY(-4px);
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1) brightness(1.05);
+            background: #ffffff;
+        }
+
+        .report-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a1628;
+        }
+
+        .report-title {
+            color: #D4AF37;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 2px;
+        }
+
+        .report-subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .report-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 62px;
+        }
+
+        .report-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .report-pages {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+
+        .report-price {
+            color: #D4AF37;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .report-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .report-stars {
+            color: #D4AF37;
+            letter-spacing: 1px;
+        }
+
+        .report-stars .half-star {
+            opacity: 0.4;
+        }
+
+        .report-reviews {
+            color: rgba(255,255,255,0.5);
+            margin-left: 4px;
+        }
+
+        .report-downloads {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .report-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .preview-btn {
+            flex: 1;
+            padding: 12px 10px;
+            background: rgba(30, 58, 138, 0.6);
+            border: 1px solid rgba(30, 58, 138, 0.8);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        .preview-btn:hover {
+            background: rgba(30, 58, 138, 0.9);
+            border-color: #fff;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .report-btn {
+            flex: 1;
+            padding: 12px 10px;
+            background: linear-gradient(135deg, #0077B5 0%, #005582 100%);
+            border: 1px solid rgba(0, 119, 181, 0.8);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeBlue 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeBlue {
+            0%, 100% { box-shadow: 0 0 8px rgba(0, 119, 181, 0.3); }
+            50% { box-shadow: 0 0 16px rgba(0, 119, 181, 0.6); }
+        }
+
+        .report-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.25) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        .report-btn:hover {
+            background: linear-gradient(135deg, #00A0DC 0%, #0077B5 100%);
+            border-color: #00A0DC;
+            color: #fff;
+            font-weight: 800;
+            animation: none;
+            transform: scale(1.02);
+        }
+
+        /* Bundle Card */
+        .bundle-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: 16px;
+            right: -32px;
+            background: #D4AF37;
+            color: #0a1628;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 40px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .bundle-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .bundle-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .bundle-title {
+            color: #D4AF37;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .bundle-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .bundle-pricing {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .bundle-original {
+            color: rgba(255,255,255,0.4);
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+
+        .bundle-price {
+            color: #D4AF37;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .bundle-btn {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 100%);
+            border: none;
+            border-radius: 8px;
+            color: #0a1628;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .bundle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Volume Tiers */
+        .volume-tiers {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .volume-tier {
+            background: rgba(10, 22, 40, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 10px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .volume-tier:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .volume-tier.featured {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .tier-qty {
+            display: inline;
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tier-discount {
+            display: inline;
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+
+        .tier-price, .tier-each {
+            display: none;
+        }
+
+        /* Reports Navigation */
+        .reports-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .nav-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            background: transparent;
+            color: #D4AF37;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+
+        .nav-arrow.pulse-right {
+            animation: fadeGold 3s ease-in-out infinite;
+        }
+
+        /* Briefs slider navigation */
+        .briefs-slider-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .briefs-slider-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .briefs-slider-track {
+            flex: 1;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .briefs-slider-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #D4AF37;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .briefs-counter {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        @keyframes fadeGold {
+            0%, 100% {
+                background: transparent;
+                border-color: rgba(212, 175, 55, 0.3);
+                color: rgba(212, 175, 55, 0.5);
+            }
+            50% {
+                background: rgba(212, 175, 55, 0.3);
+                border-color: rgba(212, 175, 55, 0.8);
+                color: #D4AF37;
+            }
+        }
+
+        .nav-counter {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .nav-counter span {
+            color: #D4AF37;
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .report-card {
+                flex: 0 0 260px;
+            }
+            .bundle-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .bundle-pricing {
+                justify-content: center;
+            }
+            .volume-tiers {
+                flex-direction: column;
+                align-items: center;
+            }
+            .volume-tier {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        /* Testimonials Carousel */
+        .testimonials-section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-section::before,
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .testimonials-section::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(20, 40, 80, 1), transparent);
+        }
+
+        .testimonials-section::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(20, 40, 80, 1), transparent);
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 40px;
+            animation: scrollTestimonials 80s linear infinite;
+            width: max-content;
+        }
+
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTestimonials {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .testimonial {
+            flex-shrink: 0;
+            min-width: 300px;
+            max-width: 350px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .testimonial-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* LinkedIn Recommendations Carousel */
+        .linkedin-recs-section {
+            margin-top: 5px;
+            padding-top: 150px;
+            margin-top: -145px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .linkedin-recs-section::before,
+        .linkedin-recs-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .linkedin-recs-section::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(20, 40, 80, 1), transparent);
+        }
+
+        .linkedin-recs-section::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(20, 40, 80, 1), transparent);
+        }
+
+        .linkedin-recs-track {
+            display: flex;
+            gap: 40px;
+            animation: scrollLinkedIn 80s linear infinite;
+            width: max-content;
+        }
+
+        .linkedin-recs-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollLinkedIn {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .linkedin-rec {
+            flex-shrink: 0;
+            min-width: 300px;
+            max-width: 350px;
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(10, 22, 40, 0.4);
+            opacity: 0.7;
+            filter: saturate(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-rec:hover {
+            opacity: 1;
+            filter: saturate(1);
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .rec-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .rec-author {
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* LinkedIn Preview Popup - CSS Only */
+        .rec-author {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .linkedin-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 12px;
+            padding: 16px;
+            padding-bottom: 26px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 10000;
+            pointer-events: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0;
+        }
+
+        .linkedin-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .rec-author:hover .linkedin-popup,
+        .linkedin-popup:hover,
+        .rec-author.active .linkedin-popup {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            border-color: #F4CF47;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .linkedin-popup-cta {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: #0077B5;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* JJ Shay LinkedIn Popup */
+        .jj-linkedin-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .jj-linkedin-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 12px;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+            z-index: 10000;
+            margin-bottom: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .jj-linkedin-wrapper:hover .jj-linkedin-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .jj-popup-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #D4AF37;
+        }
+
+        .jj-popup-stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            margin-top: 8px;
+        }
+
+        .jj-company-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: white;
+        }
+
+        .jj-company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .linkedin-popup-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .linkedin-popup-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0a1628;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .linkedin-popup-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .linkedin-popup-info {
+            flex: 1;
+        }
+
+        .linkedin-popup-name {
+            display: block;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .linkedin-popup-title {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            line-height: 1.3;
+        }
+
+        .linkedin-popup-company {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .linkedin-popup-li-logo {
+            margin-left: auto;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .linkedin-popup-li-logo:hover svg {
+            fill: #D4AF37;
+            transform: scale(1.2);
+        }
+
+        .linkedin-popup-li-logo svg {
+            transition: fill 0.2s ease, transform 0.2s ease;
+        }
+
+        .linkedin-popup-li-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .linkedin-popup-company-logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .linkedin-popup-company-logo img {
+            width: auto;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .linkedin-popup-company-name {
+            color: #D4AF37;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Playbook Preview Popup */
+        .download-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .playbook-preview {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+            margin-bottom: 15px;
+        }
+
+        .playbook-preview img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
+            border: 2px solid #D4AF37;
+        }
+
+        .download-wrapper:hover .playbook-preview {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        /* Slower scrollers on mobile for readability */
+        @media (max-width: 768px) {
+            .testimonials-track,
+            .linkedin-recs-track {
+                animation-duration: 100s;
+            }
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .popup-close:hover {
+            color: #fff;
+        }
+
+        .popup-title {
+            color: #D4AF37;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .popup-subtitle {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        .popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .popup-input {
+            padding: 14px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            background: rgba(10, 22, 40, 0.8);
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            text-align: center;
+        }
+
+        .popup-input:focus {
+            border-color: #D4AF37;
+        }
+
+        .popup-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .popup-btn {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 100%);
+            border: none;
+            border-radius: 8px;
+            color: #0a1628;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            color: #fff;
+        }
+
+        /* Header with logo left, tagline right */
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding: 0 4px;
+        }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .site-logo {
+            max-width: 119px;
+            height: auto;
+            transition: filter 0.4s ease, transform 0.4s ease;
+            filter: drop-shadow(0 0 0 transparent);
+        }
+
+        .site-logo:hover {
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
+            transform: scale(1.02);
+        }
+
+        /* Tagline Stack */
+        .tagline-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            height: 119px; /* Match logo height */
+            text-align: right;
+        }
+
+        .tagline-top {
+            color: #D4AF37;
+            font-size: 32px;
+            font-weight: 700;
+            font-style: italic;
+            letter-spacing: 1px;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #D4AF37;
+        }
+
+        .tagline-bottom {
+            color: #D4AF37;
+            font-size: 32px;
+            font-weight: 700;
+            font-style: italic;
+            letter-spacing: 1px;
+            opacity: 0;
+        }
+
+        /* Tagline typing animations */
+        .tagline-top.typing {
+            animation: typeTop 0.6s steps(9) forwards;
+            opacity: 1;
+        }
+
+        .tagline-top.done {
+            border-right: none;
+        }
+
+        .tagline-bottom.typing {
+            animation: fadeInBottom 0.4s ease forwards;
+        }
+
+        @keyframes typeTop {
+            from { width: 0; }
+            to { width: 195px; }
+        }
+
+        @keyframes fadeInBottom {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile header styles */
+        @media (max-width: 500px) {
+            .header-row {
+                gap: 6px;
+            }
+            .site-logo {
+                max-width: 80px;
+            }
+            .tagline-stack {
+                height: 55px;
+            }
+            .tagline-top {
+                font-size: 20px;
+                letter-spacing: 0.5px;
+            }
+            .tagline-bottom {
+                font-size: 20px;
+            }
+            @keyframes typeTop {
+                from { width: 0; }
+                to { width: 125px; }
+            }
+        }
+
+        /* Gold button with shimmer */
+        .gold-btn {
+            display: block;
+            margin-top: 16px;
+            text-align: center;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 50%, #D4AF37 100%);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .gold-btn:hover {
+            background-position: 100% 0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .gold-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(30deg) translateX(-100%); }
+            100% { transform: rotate(30deg) translateX(100%); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 20px;
+            margin-top: 0;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-signup {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .footer-input {
+            padding: 12px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 6px;
+            background: rgba(10, 22, 40, 0.6);
+            color: #fff;
+            font-size: 15px;
+            width: 180px;
+            outline: none;
+            transition: width 0.3s ease;
+        }
+
+        .footer-input:focus {
+            width: 220px;
+            border-color: #D4AF37;
+        }
+
+        .footer-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-btn {
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #0077B5 0%, #005582 100%);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #00A0DC 0%, #0077B5 100%);
+            box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+        }
+
+        @media (max-width: 500px) {
+            .footer-row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .footer-input {
+                width: 160px;
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+            .footer-btn {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+            .social-link {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .social-link svg {
+            width: 22px;
+            height: 22px;
+            fill: #D4AF37;
+        }
+
+        /* LinkedIn Preview Tooltip */
+        .linkedin-preview-wrapper {
+            position: relative;
+        }
+
+        .linkedin-preview {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .linkedin-preview-wrapper:hover .linkedin-preview {
+            opacity: 0.92;
+            visibility: visible;
+        }
+
+        .linkedin-preview-banner {
+            height: 60px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+        }
+
+        .linkedin-premium-badge {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            color: #d4a855;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .linkedin-preview-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            position: absolute;
+            top: 24px;
+            left: 20px;
+            background: #ccc;
+            overflow: hidden;
+        }
+
+        .linkedin-preview-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .linkedin-preview-body {
+            padding: 45px 16px 16px;
+            color: #000;
+        }
+
+        .linkedin-preview-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            margin: 0 0 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .linkedin-preview-name svg {
+            width: 16px;
+            height: 16px;
+            fill: #0077B5;
+        }
+
+        .linkedin-preview-title {
+            font-size: 12px;
+            color: #666;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .linkedin-preview-location {
+            font-size: 11px;
+            color: #999;
+            margin: 0;
+        }
+
+        /* Hide LinkedIn preview on mobile (no hover on touch) */
+        @media (max-width: 768px) {
+            .linkedin-preview {
+                display: none;
+            }
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        /* Reports responsive embeds */
+        .reports-desktop {
+            display: block;
+        }
+        .reports-mobile {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .reports-desktop {
+                display: none;
+            }
+            .reports-mobile {
+                display: block;
+            }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px 16px;
+            }
+            .glass-card {
+                padding: 24px 20px;
+                border-radius: 20px;
+            }
+            .site-logo {
+                max-width: 80px;
+            }
+            .tagline {
+                font-size: 13px;
+                letter-spacing: 1px;
+            }
+            .glass-card iframe {
+                height: 450px !important;
+            }
+            .glass-card > div[style*="padding-top"] {
+                padding-top: 0 !important;
+                height: 450px !important;
+            }
+        }
+
+        /* Intro Animation Styles */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 50%, #0a1628 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .intro-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .intro-logo {
+            max-width: 238px;
+            height: auto;
+            animation: introPulse 0.6s ease-in-out infinite;
+        }
+
+        @keyframes introPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8));
+                transform: scale(1.05);
+            }
+        }
+
+        /* Header bounce animation */
+        .header-row.animate {
+            animation: logoBounceDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes logoBounceDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            60% {
+                transform: translateY(10px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide header initially */
+        .header-row {
+            opacity: 0;
+        }
+
+        /* PDF Preview Modal - Mobile First */
+        .pdf-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.30);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .pdf-modal-overlay.active {
+            display: flex;
+        }
+
+        .pdf-modal-content {
+            background: rgba(10, 22, 40, 0.97);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            position: relative;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-modal-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #D4AF37;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .pdf-modal-title {
+            color: #D4AF37;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 16px;
+            padding-right: 30px;
+        }
+
+        .pdf-page-counter {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .pdf-viewer-container {
+            width: 100%;
+            flex: 1;
+            min-height: 50vh;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf-nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 12px;
+        }
+
+        .pdf-nav-btn {
+            background: linear-gradient(135deg, #0077B5 0%, #005582 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex: 1;
+            max-width: 140px;
+        }
+
+        .pdf-nav-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #00A0DC 0%, #0077B5 100%);
+            box-shadow: 0 0 12px rgba(0, 119, 181, 0.4);
+        }
+
+        /* Bundle Offer Popup */
+        .bundle-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.30);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bundle-popup-overlay.active {
+            display: flex;
+        }
+
+        .bundle-popup-content {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(0, 119, 181, 0.3);
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-align: center;
+            max-width: 340px;
+            width: 90%;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .bundle-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .bundle-input {
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 119, 181, 0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.8);
+            color: #0a1628;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .bundle-input::placeholder {
+            color: rgba(10, 22, 40, 0.5);
+        }
+
+        .bundle-input:focus {
+            border-color: #0077B5;
+        }
+
+        .bundle-submit-btn {
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0077B5 0%, #005582 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .bundle-submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #00A0DC 0%, #0077B5 100%);
+            box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .bundle-badge {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #0a1628;
+            font-size: 24px;
+            font-weight: 800;
+            padding: 10px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .bundle-title {
+            color: #0a1628;
+            font-size: 18px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .bundle-title .counter-number {
+            color: #0077B5;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .bundle-subtitle {
+            color: #0a1628;
+            font-size: 13px;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .bundle-price {
+            margin-bottom: 20px;
+        }
+
+        .original-price {
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .sale-price {
+            color: #D4AF37;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .bundle-buy-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #0a1628;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .bundle-buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .bundle-includes {
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        /* Deal Options */
+        .deal-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .deal-option {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .deal-option-featured {
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .deal-badge {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .deal-badge-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #0a1628;
+        }
+
+        .deal-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+        }
+
+        .deal-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #0a1628;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .deal-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .deal-btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #D4AF37;
+        }
+
+        /* Executive Counter */
+        .exec-counter {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .counter-number {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+            min-width: 35px;
+            text-align: center;
+            position: relative;
+        }
+
+        .counter-number.flip {
+            animation: flipNumber 0.6s ease-in-out;
+        }
+
+        @keyframes flipNumber {
+            0% { transform: rotateX(0deg); }
+            50% { transform: rotateX(90deg); }
+            100% { transform: rotateX(0deg); }
+        }
+
+        .counter-suffix {
+            font-size: 14px;
+            vertical-align: super;
+        }
+
+        /* Reports Section Styles - White Cards */
+        .reports-section {
+            padding: 0;
+        }
+
+        .reports-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reports-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 206, 209, 0.15);
+            border: 1px solid rgba(0, 206, 209, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+            color: #00CED1;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .reports-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .reports-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00CED1;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .reports-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .reports-scroll-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 10px 0 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 206, 209, 0.3) transparent;
+            width: 100%;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 206, 209, 0.3);
+            border-radius: 3px;
+        }
+
+        .reports-cards {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+            width: max-content;
+        }
+
+        .report-card {
+            flex: 0 0 280px;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(0, 206, 209, 0.2);
+            border-radius: 16px;
+            padding: 0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+            opacity: 0.7;
+            filter: saturate(0.8) brightness(0.9);
+        }
+
+        .report-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(0, 206, 209, 0.2);
+        }
+
+        .report-card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .report-card:hover {
+            transform: translateY(-4px);
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1) brightness(1.05);
+            background: #ffffff;
+        }
+
+        /* Report Card Image Popup on Hover */
+        .report-card {
+            position: relative;
+        }
+
+        .report-card-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+            margin-bottom: 15px;
+        }
+
+        .report-card-popup img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.4);
+            border: 3px solid #D4AF37;
+        }
+
+        .report-card:hover .report-card-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .report-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .report-card-icon {
+            font-size: 28px;
+        }
+
+        .report-card-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 206, 209, 0.15);
+            color: #0a1628;
+        }
+
+        .report-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00CED1;
+            margin: 0 0 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .report-card p {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0 0 12px 0;
+            transition: color 0.3s ease;
+        }
+
+        .report-card:hover h3 {
+            color: #0a1628;
+        }
+
+        .report-card:hover p {
+            color: #0a1628;
+        }
+
+        .report-card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .report-card-features li {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            padding-left: 14px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .report-card:hover .report-card-features li {
+            color: rgba(10, 22, 40, 0.8);
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .report-card-features li::before {
+            content: "•";
+            color: rgba(0, 206, 209, 0.5);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .report-card-download {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .report-card-download:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+        }
+
+        .reports-section-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .report-card {
+                flex: 0 0 260px;
+            }
+            .reports-title {
+                font-size: 24px;
+            }
+        }
+
+        /* GitHub Projects - Original Style with Images */
+        .github-projects-grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 rgba(212, 175, 55, 0.1);
+            min-height: 480px;
+            align-items: stretch;
+        }
+
+        .github-projects-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .github-projects-grid::-webkit-scrollbar-track {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 3px;
+        }
+
+        .github-projects-grid::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        .github-project-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+            position: relative;
+            opacity: 0.7;
+            filter: saturate(0.8);
+            overflow: visible;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 140px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            overflow: visible;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0;
+            border: none;
+        }
+
+        .project-gif {
+            display: none;
+        }
+
+        .github-project-card:hover {
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            color: #D4AF37;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .project-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+            align-items: center;
+        }
+
+        .project-tag {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .project-demo {
+            flex: 1;
+            text-align: center;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-demo:hover {
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .project-demo:active {
+            transform: scale(0.98);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        .card-github-logo {
+            width: 16px;
+            height: 16px;
+            margin-left: auto;
+            opacity: 1;
+        }
+
+        .card-github-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* GitHub Section Styles */
+        .github-section {
+            padding: 0;
+        }
+
+        .github-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .github-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+            color: #D4AF37;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .github-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .github-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .github-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .github-scroll-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 10px 0 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+            width: 100%;
+        }
+
+        .github-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .github-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .github-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 3px;
+        }
+
+        .github-cards {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 10px;
+        }
+
+        .github-card {
+            flex: 0 0 260px;
+            background: rgba(20, 40, 80, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .github-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .repo-icon {
+            font-size: 22px;
+        }
+
+        .card-github-logo {
+            width: 16px;
+            height: 16px;
+            fill: rgba(255, 255, 255, 0.5);
+            transition: fill 0.3s ease;
+        }
+
+        .github-card:hover .card-github-logo {
+            fill: #D4AF37;
+        }
+
+        .lang-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-badge.python {
+            background: rgba(53, 114, 165, 0.3);
+            color: #6BA3D6;
+        }
+
+        .lang-badge.js {
+            background: rgba(241, 224, 90, 0.2);
+            color: #F1E05A;
+        }
+
+        .github-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        .github-card p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 6px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            color: rgba(212, 175, 55, 0.8);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 3px 8px;
+            border-radius: 8px;
+        }
+
+        .view-github-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px auto 0;
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #D4AF37;
+            border-radius: 30px;
+            color: #D4AF37;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .view-github-btn:hover {
+            background: #D4AF37;
+            color: #0a1628;
+        }
+
+        .github-icon-sm {
+            width: 18px;
+            height: 18px;
+        }
+
+        .github-section-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+
+        .card-github-link {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .github-card:hover .card-github-link {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .github-card {
+                flex: 0 0 220px;
+            }
+            .github-title {
+                font-size: 24px;
+            }
+        }
+
+        /* YouTube Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 115, 32, 0.95) 0%, rgba(90, 70, 15, 0.98) 50%, rgba(60, 45, 10, 0.98) 100%);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 10002;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .video-modal-close { top: -40px; right: 10px; font-size: 40px; }
+            .video-modal-content { padding: 0 5px; width: 95%; }
+        }
+
+        /* Footer */
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .linkedin-follow-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #0a1628;
+            padding: 10px 20px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+
+        .linkedin-follow-btn:hover {
+            background: #00CED1;
+            color: #0a1628;
+            border-color: #00CED1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            color: white;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #d4af37;
+            transform: scale(1.1);
+        }
+
+        .footer-social svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .site-footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro Loading Overlay -->
+    <div class="intro-overlay" id="intro-overlay">
+        <img src="https://jjshay.com/logo.png" alt="JJ Shay" class="intro-logo">
+    </div>
+    <!-- Parallax Background -->
+    <div class="parallax-bg"></div>
+
+    <!-- Animated background orbs -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="container">
+            <!-- Header: Logo + Tagline -->
+            <div class="header-row">
+                <div class="logo-container">
+                    <img src="https://jjshay.com/logo.png" alt="JJ Shay" class="site-logo">
+                </div>
+                <div class="tagline-stack" id="tagline">
+                    <span class="tagline-top">Executive</span>
+                    <span class="tagline-bottom">AI Strategy</span>
+                </div>
+            </div>
+
+            <!-- Horizontal Tab Bar -->
+            <div class="tab-bar">
+                <button class="gold-tab active" onclick="switchTab('news')">
+                    <svg viewBox="0 0 24 24" class="gold-tab-icon" fill="white"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                    <span class="gold-tab-text">NEWS</span>
+                </button>
+                <button class="gold-tab" onclick="switchTab('briefs')">
+                    <img src="briefs.png" alt="Briefs" class="gold-tab-icon">
+                    <span class="gold-tab-text">BRIEFS</span>
+                </button>
+                <button class="gold-tab" onclick="switchTab('reports')">
+                    <img src="reports.png" alt="Reports" class="gold-tab-icon">
+                    <span class="gold-tab-text">REPORTS</span>
+                </button>
+                <button class="gold-tab" onclick="switchTab('github')">
+                    <img src="github.png" alt="Projects" class="gold-tab-icon">
+                    <span class="gold-tab-text">PROJECTS</span>
+                </button>
+                <button class="gold-tab" onclick="switchTab('about')">
+                    <img src="about.png" alt="About" class="gold-tab-icon">
+                    <span class="gold-tab-text">ABOUT</span>
+                </button>
+            </div>
+
+            <!-- News Content -->
+            <div id="news" class="tab-content active">
+                <div class="glass-card" style="padding: 20px;">
+                    <iframe
+                        src="https://rss.app/embed/v1/carousel/bJZbxhVRx0Xx77J3"
+                        frameborder="0"
+                        style="width: 100%; height: 480px; border: 0;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Briefs Content -->
+            <div id="briefs" class="tab-content">
+                <div class="glass-card">
+                    <!-- Desktop: Double page layout -->
+                    <div class="reports-desktop" style="position:relative;padding-top:60%;height:0;width:100%">
+                        <iframe id="issuu-desktop" allow="clipboard-write" sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-forms" allowfullscreen="true" style="position:absolute;border:none;width:100%;height:100%;left:0;right:0;top:0;bottom:0;"></iframe>
+                    </div>
+                    <!-- Mobile: Single page layout -->
+                    <div class="reports-mobile" style="position:relative;padding-top:max(60%,326px);height:0;width:100%">
+                        <iframe id="issuu-mobile" allow="clipboard-write" sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-forms" allowfullscreen="true" style="position:absolute;border:none;width:100%;height:100%;left:0;right:0;top:0;bottom:0;"></iframe>
+                    </div>
+                    <!-- Briefs Navigation -->
+                    <div class="briefs-slider-nav">
+                        <div class="briefs-slider-row">
+                            <button class="nav-arrow" onclick="changeBrief(-1)">←</button>
+                            <div class="briefs-slider-track">
+                                <div class="briefs-slider-progress" id="briefs-progress" style="width: 3.45%;"></div>
+                            </div>
+                            <button class="nav-arrow pulse-right" onclick="changeBrief(1)">→</button>
+                        </div>
+                        <span class="briefs-counter"><span id="current-brief">1</span> of <span id="total-briefs">29</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Content -->
+            <div id="reports" class="tab-content">
+                <div class="glass-card reports-section">
+                    <div class="reports-section-wrapper">
+                        <div class="reports-scroll-container">
+                            <div class="reports-cards">
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook"></div>
+                                    <img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">130 Pages</span>
+                                        </div>
+                                        <h3>The AI Acquisition Playbook</h3>
+                                        <p>The CFO & CEO's definitive guide to acquiring AI companies and acqui-hires.</p>
+                                        <ul class="report-card-features">
+                                            <li>19 chapters, 29 ready-to-use templates</li>
+                                            <li>Due diligence protocols & valuation methods</li>
+                                            <li>Post-close integration playbooks</li>
+                                        </ul>
+                                        <a href="https://bit.ly/AI_Download" class="report-card-download">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="02-ai-companies-category.png" alt="AI Companies by Category"></div>
+                                    <img src="02-ai-companies-category.png" alt="AI Companies by Category" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">600+ Companies</span>
+                                        </div>
+                                        <h3>AI Companies by Category</h3>
+                                        <p>Comprehensive database of AI companies organized by vertical, use case, and technology.</p>
+                                        <ul class="report-card-features">
+                                            <li>Healthcare, FinTech, Computer Vision & more</li>
+                                            <li>Investment stage & funding data</li>
+                                            <li>M&A target identification</li>
+                                        </ul>
+                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="03-bbp-build.png" alt="BBP: Build"></div>
+                                    <img src="03-bbp-build.png" alt="BBP: Build" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">45 Pages</span>
+                                        </div>
+                                        <h3>BBP: Build</h3>
+                                        <p>When and how to build AI capabilities in-house from scratch.</p>
+                                        <ul class="report-card-features">
+                                            <li>Build vs Buy decision framework</li>
+                                            <li>Team composition & talent acquisition</li>
+                                            <li>Infrastructure & technology stack guides</li>
+                                        </ul>
+                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="04-bbp-buy.png" alt="BBP: Buy"></div>
+                                    <img src="04-bbp-buy.png" alt="BBP: Buy" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">52 Pages</span>
+                                        </div>
+                                        <h3>BBP: Buy</h3>
+                                        <p>Strategic acquisition guide for AI companies and acqui-hires.</p>
+                                        <ul class="report-card-features">
+                                            <li>M&A target identification strategies</li>
+                                            <li>Valuation methodologies for AI assets</li>
+                                            <li>Post-merger integration playbook</li>
+                                        </ul>
+                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="05-bbp-partner.png" alt="BBP: Partner"></div>
+                                    <img src="05-bbp-partner.png" alt="BBP: Partner" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">38 Pages</span>
+                                        </div>
+                                        <h3>BBP: Partner</h3>
+                                        <p>Strategic partnership frameworks for AI capability development.</p>
+                                        <ul class="report-card-features">
+                                            <li>Partnership structure options</li>
+                                            <li>Vendor evaluation scorecards</li>
+                                            <li>Contract negotiation playbooks</li>
+                                        </ul>
+                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Content -->
+            <div id="github" class="tab-content">
+                <div class="glass-card">
+                    <div class="github-projects-grid">
+                        <!-- News Intelligence -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/news-intelligence.png" alt="News Intelligence" class="project-image">
+                                <img src="01-news-intelligence.gif" alt="News Intelligence Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">News Intelligence</h4>
+                            </div>
+                            <p class="project-desc">Multi-AI news scoring system that queries ChatGPT, Claude, Gemini, Grok & Perplexity simultaneously. Aggregates responses to generate bias-free credibility scores and sentiment analysis for any article URL.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Multi-AI</span>
+                                <span class="project-tag">NLP</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('Y6JEvODTHv4'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- eBay Listing Automation -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/ebay-listing-automation.png" alt="eBay Listing Automation" class="project-image">
+                                <img src="02-ebay-listing.gif" alt="eBay Listing Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">eBay Listing Automation</h4>
+                            </div>
+                            <p class="project-desc">End-to-end eBay listing automation. Upload a product photo and AI vision generates optimized titles, detailed descriptions, item specifics, and competitive pricing based on sold comparables.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">eBay API</span>
+                                <span class="project-tag">Vision AI</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Art Crop System -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/art-crop-system.png" alt="Art Crop System" class="project-image">
+                                <img src="03-art-crop.gif" alt="Art Crop Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Art Crop System</h4>
+                            </div>
+                            <p class="project-desc">Two-tier artwork cropping system. Fast rembg for simple backgrounds, then multi-AI consensus (GPT-4V, Claude, Gemini, Grok) for complex scenes. Outputs 8 detail crops per artwork.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                                <span class="project-tag">rembg</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('GA8Dm9hZUsk'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Handwriting Analysis -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/handwriting-analysis.png" alt="Handwriting Analysis" class="project-image">
+                                <img src="05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Handwriting Analysis</h4>
+                            </div>
+                            <p class="project-desc">Forensic signature authentication using statistical analysis. Compares questioned signatures against verified baselines using 14 measurable characteristics including slant, pressure, and stroke patterns.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                                <span class="project-tag">Statistics</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Mockup Generator -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/mockup-generator.png" alt="Mockup Generator" class="project-image">
+                                <img src="04-mockup-generator.gif" alt="Mockup Generator Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Mockup Generator</h4>
+                            </div>
+                            <p class="project-desc">Batch mockup generation for e-commerce. Automatically places artwork into multiple frame styles and room scenes. Exports 64 size variants optimized for eBay, Etsy, and social platforms.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pillow</span>
+                                <span class="project-tag">PhotoRoom</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Video Creator -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/product-video-creator.png" alt="Product Video Creator" class="project-image">
+                                <img src="06-google-apps.gif" alt="Product Video Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Product Video Creator</h4>
+                            </div>
+                            <p class="project-desc">Creates Ken Burns style videos from product photos with pan, zoom, and fade effects. Generates 45-second videos with text overlays, optimized for eBay listings, Instagram Reels, and Facebook.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">FFmpeg</span>
+                                <span class="project-tag">OpenCV</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('zq5XjYdL_Xs'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Google Apps Scripts -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/google-apps-scripts.png" alt="Google Apps Scripts" class="project-image">
+                                <img src="06-google-apps.gif" alt="Google Apps Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Google Apps Scripts</h4>
+                            </div>
+                            <p class="project-desc">Google Sheets automation suite with scheduled triggers. Syncs eBay inventory, generates sales dashboards, sends customer follow-ups, and monitors competitor pricing - all running automatically.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Google API</span>
+                                <span class="project-tag">Automation</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Content -->
+            <div id="about" class="tab-content">
+                    <div class="glass-card">
+                        <div class="about-layout">
+                            <div class="profile-header">
+                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="John (JJ) Shay" class="profile-img">
+                                <div class="profile-info">
+                                    <h3 class="profile-name">John (JJ) Shay</h3>
+                                    <div class="profile-buttons">
+                                        <div class="jj-linkedin-wrapper">
+                                            <a href="https://www.linkedin.com/in/jjshay/" target="_blank" class="social-link" id="jj-linkedin-link">
+                                                <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                                            </a>
+                                            <div class="jj-linkedin-popup">
+                                            <div class="linkedin-popup-header">
+                                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="JJ Shay" class="jj-popup-avatar">
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">John (JJ) Shay</span>
+                                                    <span class="linkedin-popup-title">AI Strategist & M&A Executive</span>
+                                                </span>
+                                            </div>
+                                            <div class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Global Gauntlet</span>
+                                                <a href="https://www.linkedin.com/in/jjshay/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </div>
+                                            <div class="jj-popup-stats">
+                                                <span>9,000+ Followers</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <a href="mailto:js@jjshay.com" class="social-link">
+                                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-bio">
+                                <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; text-align: left;">
+                                    <strong style="color: #D4AF37;">AI strategist with 20+ years driving M&A, partnerships, and GTM</strong> across tech, healthcare, and life sciences. At <a href="https://about.google/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Google</strong></a>, <a href="https://www.fitbit.com/global/us/about-us" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Fitbit</strong></a>, <a href="https://www.intuit.com/company/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Intuit</strong></a>, and <a href="https://www.philips.com/a-w/about.html" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Philips</strong></a>, he closed <strong style="color: #D4AF37;">$4B+ in deals</strong>—including leading the <a href="https://democraticmedia.org/assets/resources/googlefitbitdeal020820.pdf" target="_blank" style="text-decoration: none;"><strong style="color: #D4AF37;">$2.1B Google-Fitbit integration</strong></a> solo against Google's 50-person team—and partnered with 50+ AI startups to bring emerging tech to market.
+                                </p>
+                                <!-- Company Logos -->
+                                <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
+                                    <div class="company-logos-row" style="margin-bottom: 0; justify-content: flex-start;">
+                                        <a href="https://about.google/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Transparent_google_logo_%282011-2015%29.png" alt="Google" class="company-logo logo-google"></a>
+                                        <a href="https://www.fitbit.com/global/us/about-us" target="_blank"><img src="https://www.freepnglogos.com/uploads/fitbit-png-logo/why-fitbit-symbol-png-logo-10.png" alt="Fitbit" class="company-logo logo-fitbit"></a>
+                                        <a href="https://www.intuit.com/company/" target="_blank"><img src="https://cdn.freebiesupply.com/images/large/2x/intuit-logo-black-transparent.png" alt="Intuit" class="company-logo logo-intuit"></a>
+                                        <a href="https://www.philips.com/a-w/about.html" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Philips_logo_new.svg/1200px-Philips_logo_new.svg.png" alt="Philips" class="company-logo logo-philips"></a>
+                                    </div>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; text-align: left; margin-top: 15px;">
+                                    A <a href="https://www.babson.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Babson College</strong></a> graduate with executive training from <a href="https://www.harvard.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Harvard</strong></a>, <a href="https://www.mit.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">MIT</strong></a>, and <a href="https://www.stanford.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Stanford</strong></a>, JJ's <strong style="color: #D4AF37;">obsession with AI started early</strong>—watching Data on Star Trek and seeing a roadmap, not science fiction. <strong style="color: #D4AF37;">When the AI wave accelerated</strong>, he went all in—<strong style="color: #D4AF37;">building 10+ production AI systems hands-on</strong>. Today, he shares insights with 9,200+ executives and AI leaders, breaking down hype from what's actionable to <strong style="color: #D4AF37;">bridge technical depth with business clarity</strong>.
+                                </p>
+                                <!-- School Logos -->
+                                <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
+                                    <div class="company-logos-row" style="margin-bottom: 0; justify-content: flex-start;">
+                                        <a href="https://www.babson.edu/about/" target="_blank"><img src="https://jjshay.com/1.png" alt="Babson College" class="company-logo logo-babson"></a>
+                                        <a href="https://www.harvard.edu/about/" target="_blank"><img src="https://jjshay.com/2.png" alt="Harvard" class="company-logo logo-harvard"></a>
+                                        <a href="https://www.mit.edu/about/" target="_blank"><img src="https://jjshay.com/4.png" alt="MIT" class="company-logo logo-mit"></a>
+                                        <a href="https://www.stanford.edu/about/" target="_blank"><img src="https://jjshay.com/3.png" alt="Stanford" class="company-logo logo-stanford"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LinkedIn Recommendations -->
+                        <div class="linkedin-recs-section">
+                            <div class="linkedin-recs-track">
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"A great leader who handles challenging matters with critical thinking and great skill."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/matt-tabas-42ab5789/">— Matt Tabas, Partner at Arnold & Porter
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/48.png" alt="Matt Tabas"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Matt Tabas</span>
+                                                    <span class="linkedin-popup-title">Partner</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Arnold & Porter</span>
+                                                <a href="https://www.linkedin.com/in/matt-tabas-42ab5789/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Attention to detail and thoroughness impressed me most. Key attributes that led to success."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/whoisdawnbaker/">— Dawn Baker, Leadership Development
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/47.png" alt="Dawn Baker"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Dawn Baker</span>
+                                                    <span class="linkedin-popup-title">Leadership Development Executive</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Back Market</span>
+                                                <a href="https://www.linkedin.com/in/whoisdawnbaker/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Fantastic at 'client ready' presentations. Great ability to build relationships with executives."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/peterbershatsky/">— Peter Bershatsky, VP Corp Dev at Confluent
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/49.png" alt="Peter Bershatsky"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Peter Bershatsky</span>
+                                                    <span class="linkedin-popup-title">VP Corporate Development</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Confluent</span>
+                                                <a href="https://www.linkedin.com/in/peterbershatsky/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Truly dedicated M&A professional with impeccable business judgment. Sets the bar very high."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/brandoneldredge/">— Brandon Eldredge, CFO at PathAI
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/46.png" alt="Brandon Eldredge"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Brandon Eldredge</span>
+                                                    <span class="linkedin-popup-title">Chief Financial Officer</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">PathAI</span>
+                                                <a href="https://www.linkedin.com/in/brandoneldredge/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Energetic and resourceful with strong M&A finance knowledge. Highly regarded."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/tchang1/">— Ted Chang, Sr. Director Corp Dev at Adobe
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/52.png" alt="Ted Chang"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Ted Chang</span>
+                                                    <span class="linkedin-popup-title">Sr. Director Corporate Development</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Adobe</span>
+                                                <a href="https://www.linkedin.com/in/tchang1/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"High-energy, perseverance and attention to detail. Focused, professional and delivers."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/neil-williams-3877388/">— Neil Williams, Former EVP & CFO at Intuit
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/50.png" alt="Neil Williams"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Neil Williams</span>
+                                                    <span class="linkedin-popup-title">Former EVP & Chief Financial Officer</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Intuit</span>
+                                                <a href="https://www.linkedin.com/in/neil-williams-3877388/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Outstanding corporate development professional. Natural curiosity, consistently over-delivers."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/company/overcrest-capital-advisors-llc/">— Tim Maynard, MD at Overcrest Capital
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/55.png" alt="Tim Maynard"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Tim Maynard</span>
+                                                    <span class="linkedin-popup-title">Managing Director</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Overcrest Capital</span>
+                                                <a href="https://www.linkedin.com/company/overcrest-capital-advisors-llc/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Strong strategic thinker with amazing work ethic. Outsize strengths in corporate development."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/andrew-morbitzer/">— Andrew Morbitzer, Corp Dev Leader
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/54.png" alt="Andrew Morbitzer"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Andrew Morbitzer</span>
+                                                    <span class="linkedin-popup-title">Corporate Development Leader</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Life360</span>
+                                                <a href="https://www.linkedin.com/in/andrew-morbitzer/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"One of the most energetic, self-motivated professionals I've encountered. Top-tier talent."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/mpdonovan04/">— Mike Donovan, VP Corp Finance
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/51.png" alt="Mike Donovan"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Mike Donovan</span>
+                                                    <span class="linkedin-popup-title">VP Corporate Finance</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Premier Research</span>
+                                                <a href="https://www.linkedin.com/in/mpdonovan04/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Great communication skills and instincts for strategic acquisitions. Would work with him in a heartbeat."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/josephmao/">— Joseph Mao, Executive Director at JPMorgan
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/53.png" alt="Joseph Mao"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Joseph Mao</span>
+                                                    <span class="linkedin-popup-title">Executive Director</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">JPMorgan</span>
+                                                <a href="https://www.linkedin.com/in/josephmao/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- Duplicates for seamless loop -->
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"A great leader who handles challenging matters with critical thinking and great skill."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/matt-tabas-42ab5789/">— Matt Tabas, Partner at Arnold & Porter
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/48.png" alt="Matt Tabas"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Matt Tabas</span>
+                                                    <span class="linkedin-popup-title">Partner</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Arnold & Porter</span>
+                                                <a href="https://www.linkedin.com/in/matt-tabas-42ab5789/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Attention to detail and thoroughness impressed me most. Key attributes that led to success."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/whoisdawnbaker/">— Dawn Baker, Leadership Development
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/47.png" alt="Dawn Baker"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Dawn Baker</span>
+                                                    <span class="linkedin-popup-title">Leadership Development Executive</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Back Market</span>
+                                                <a href="https://www.linkedin.com/in/whoisdawnbaker/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="linkedin-rec">
+                                    <p class="rec-text">"Fantastic at 'client ready' presentations. Great ability to build relationships with executives."</p>
+                                    <p class="rec-author" data-linkedin="https://www.linkedin.com/in/peterbershatsky/">— Peter Bershatsky, VP Corp Dev at Confluent
+                                        <span class="linkedin-popup">
+                                            <span class="linkedin-popup-header">
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/49.png" alt="Peter Bershatsky"></span>
+                                                <span class="linkedin-popup-info">
+                                                    <span class="linkedin-popup-name">Peter Bershatsky</span>
+                                                    <span class="linkedin-popup-title">VP Corporate Development</span>
+                                                </span>
+                                            </span>
+                                            <span class="linkedin-popup-company">
+                                                <span class="linkedin-popup-company-name">Confluent</span>
+                                                <a href="https://www.linkedin.com/in/peterbershatsky/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <a class="linkedin-follow-btn" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jjshay" target="_blank">Follow on LinkedIn</a>
+                <div class="footer-copyright">
+                    © 2026 JJ Shay. All rights reserved.
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdf-preview-modal" class="pdf-modal-overlay">
+        <div class="pdf-modal-content">
+            <button class="pdf-modal-close" onclick="closePdfPreview()">&times;</button>
+            <h3 class="pdf-modal-title" id="pdf-modal-title">Report Preview</h3>
+            <div class="pdf-page-counter">Page <span id="current-page">1</span> of <span id="total-pages">10</span></div>
+            <div class="pdf-viewer-container">
+                <iframe id="pdf-viewer" src="" class="pdf-viewer"></iframe>
+            </div>
+            <div class="pdf-nav-buttons">
+                <button class="pdf-nav-btn" onclick="prevPage()">← Previous</button>
+                <button class="pdf-nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Failsafe: ensure overlay hides even if load event fails on mobile
+        setTimeout(function() {
+            var o = document.getElementById('intro-overlay');
+            if (o && !o.classList.contains('fade-out')) {
+                o.classList.add('fade-out');
+                setTimeout(function() { o.style.display = 'none'; }, 600);
+            }
+        }, 2500);
+
+        // Intro Animation Sequence
+        window.addEventListener('load', function() {
+            const introOverlay = document.getElementById('intro-overlay');
+            const headerRow = document.querySelector('.header-row');
+            const taglineTop = document.querySelector('.tagline-top');
+            const taglineBottom = document.querySelector('.tagline-bottom');
+
+            // Quick pulse then fade
+            setTimeout(function() {
+                // Fade out the intro overlay
+                introOverlay.classList.add('fade-out');
+
+                // After overlay fades, bounce in the header
+                setTimeout(function() {
+                    headerRow.classList.add('animate');
+
+                    // After header bounces, type "Executive"
+                    setTimeout(function() {
+                        taglineTop.classList.add('typing');
+
+                        // After "Executive" typed, remove cursor and fade in "AI Strategy"
+                        setTimeout(function() {
+                            taglineTop.classList.add('done');
+                            taglineBottom.classList.add('typing');
+                        }, 700);
+                    }, 400);
+                }, 300);
+
+                // Remove overlay from DOM after animation
+                setTimeout(function() {
+                    introOverlay.style.display = 'none';
+                }, 600);
+            }, 500);
+        });
+
+        // YouTube Video Modal functions
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            modal.classList.remove('active');
+            frame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on background click
+        document.getElementById('video-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Tab switching function
+        function switchTab(tabId) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.gold-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Handle hash-based navigation on page load
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.gold-tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                // Find and activate the correct tab button
+                const tabButtons = document.querySelectorAll('.gold-tab');
+                tabButtons.forEach(btn => {
+                    if (btn.textContent.trim().toLowerCase() === hash) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                // Activate the content
+                document.getElementById(hash).classList.add('active');
+            }
+        });
+
+        // Parallax scrolling effect
+        window.addEventListener('scroll', function() {
+            const parallax = document.querySelector('.parallax-bg');
+            const orbs = document.querySelector('.bg-orbs');
+            const scrolled = window.pageYOffset;
+
+            parallax.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+            orbs.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+        });
+
+        // Briefs navigation
+        const briefs = [
+            'the_cfo_s_ai_playbook',
+            'ai_build_vs._buy_report',
+            'the_ai_due_diligence_playbook',
+            'board-ai-briefing-book-20-slides',
+            'directory_of_rated_ai_websites_',
+            'ai_implementation_autopsy_report',
+            'series_c_private_ai_companies_to_watch_december_',
+            '50_robotics_companies_worth_watching_december_202',
+            'ai_101_for_executives',
+            'follow-up_50_ai_companies_disrupting_creativity_',
+            '20_ai_companies_disrupting_creative_tools_',
+            'the_financial_ai_roi_playbook',
+            'ai_observability_market',
+            'ai_privacy_impact_report',
+            'ai_data_labeling_model_training_executive_presenta',
+            'ai_insurance_disruption_report',
+            '10_ai_concepts_for_ceos_2e6678f33198a8',
+            'cfo_strategic_guide_on_ai-predictive-analytics_',
+            'local_device_llm_executive_briefing',
+            'data_generation_labeling_executive_brief',
+            'ai_gtm_executive_brief',
+            'ai_customer_service_executive_brief',
+            'ai_enterprise_executive_overview_',
+            'ai_hw_market_executive_brief',
+            'ai_safety_security_market_executive_brief',
+            'ai_observatory_evaluation_market_executive_brief',
+            'ai_agent_market_executive_brief',
+            'smb_ai_startups_executive_summary_2025_',
+            'ai_media_tools_executive_summary'
+        ];
+        let currentBriefIndex = 0;
+
+        function loadBrief(index) {
+            const brief = briefs[index];
+            const baseUrl = 'https://e.issuu.com/embed.html?backgroundColor=%23ffffff&d=' + brief + '&doAutoflipPages=true&hideIssuuLogo=true&hideShareButton=true&showOtherPublicationsAsSuggestions=true&u=jjshay';
+            document.getElementById('issuu-desktop').src = baseUrl + '&pageLayout=doublePage';
+            document.getElementById('issuu-mobile').src = baseUrl + '&pageLayout=singlePage';
+            document.getElementById('current-brief').textContent = index + 1;
+            document.getElementById('total-briefs').textContent = briefs.length;
+            // Update slider progress
+            const progress = ((index + 1) / briefs.length) * 100;
+            document.getElementById('briefs-progress').style.width = progress + '%';
+        }
+
+        function changeBrief(direction) {
+            currentBriefIndex += direction;
+            if (currentBriefIndex < 0) currentBriefIndex = briefs.length - 1;
+            if (currentBriefIndex >= briefs.length) currentBriefIndex = 0;
+            loadBrief(currentBriefIndex);
+        }
+
+        // Load first brief on page load
+        loadBrief(0);
+
+
+
+        // Reports carousel navigation
+        function scrollReports(direction) {
+            const grid = document.querySelector('.reports-grid');
+            const cards = grid.querySelectorAll('.report-card');
+            const cardWidth = cards[0].offsetWidth + 20; // card width + gap
+
+            grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        }
+
+        // Update counter on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.querySelector('.reports-grid');
+            if (grid) {
+                grid.addEventListener('scroll', function() {
+                    const cardWidth = 300; // approximate card width + gap
+                    const currentIndex = Math.round(grid.scrollLeft / cardWidth) + 1;
+                    document.getElementById('current-report').textContent = Math.min(currentIndex, 5);
+                });
+            }
+        });
+
+        // PDF Preview System
+        let currentPage = 1;
+        const maxPreviewPages = 10;
+        let currentPdfUrl = '';
+        let pdfPageViews = 0;
+
+        // PDF URLs for each product
+        const pdfUrls = {
+            'dd1': 'AI%20Due%20Diligence%20Report%20-%20Part%20I%20of%20III.pdf',
+            'dd2': 'AI%20Due%20Diligence%20Report%20-%20Part%20II%20of%20III.pdf',
+            'dd3': 'AI%20Due%20Diligence%20Report%20-%20Part%20III%20of%20III.pdf',
+            'cfo': 'AI%20Implementation%20Hidden%20Costs%20CFO%20Report.pdf',
+            'hiring': 'AI%20Team%20Hiring%20Report%20for%20Executives.pdf',
+            'bbp1': 'BBP%20Report%20Part%20I.pdf',
+            'bbp2': 'BBP%20Report%20Part%20II.pdf',
+            'bbp3': 'BBP%20Report%20Part%20III.pdf'
+        };
+
+        const productTitles = {
+            'dd1': 'Due Diligence Part I',
+            'dd2': 'Due Diligence Part II',
+            'dd3': 'Due Diligence Part III',
+            'cfo': 'CFO AI Hidden Costs',
+            'hiring': 'AI Talent Playbook',
+            'bbp1': 'Build Buy Partner I',
+            'bbp2': 'Build Buy Partner II',
+            'bbp3': 'Build Buy Partner III'
+        };
+
+        function openPdfPreview(productId) {
+            currentPage = 1;
+            pdfPageViews = 0;
+            currentPdfUrl = pdfUrls[productId] || '';
+
+            if (!currentPdfUrl) {
+                alert('Preview not available yet');
+                return;
+            }
+
+            document.getElementById('pdf-modal-title').textContent = productTitles[productId] + ' - Preview';
+            document.getElementById('current-page').textContent = currentPage;
+            document.getElementById('total-pages').textContent = maxPreviewPages;
+
+            // Use Google Docs viewer for PDF with page parameter
+            const viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(window.location.origin + '/' + currentPdfUrl) + '&embedded=true';
+            document.getElementById('pdf-viewer').src = currentPdfUrl;
+
+            document.getElementById('pdf-preview-modal').classList.add('active');
+        }
+
+        function closePdfPreview() {
+            document.getElementById('pdf-preview-modal').classList.remove('active');
+            document.getElementById('pdf-viewer').src = '';
+        }
+
+        function nextPage() {
+            if (currentPage < maxPreviewPages) {
+                currentPage++;
+                pdfPageViews++;
+                document.getElementById('current-page').textContent = currentPage;
+
+                // Check if reached page limit
+                if (currentPage >= maxPreviewPages) {
+                    showBundleOffer();
+                }
+            } else {
+                showBundleOffer();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                document.getElementById('current-page').textContent = currentPage;
+            }
+        }
+
+        // Executive counter - starts at 25, adds 2 twice daily (+4/day)
+        function getExecCount() {
+            const startDate = new Date('2025-12-30T00:00:00'); // Launch date
+            const now = new Date();
+            const halfDaysPassed = Math.floor((now - startDate) / (1000 * 60 * 60 * 12));
+            // Start at 25, add 2 every 12 hours
+            return 25 + (halfDaysPassed * 2);
+        }
+
+        function getOrdinalSuffix(n) {
+            const s = ['th', 'st', 'nd', 'rd'];
+            const v = n % 100;
+            return s[(v - 20) % 10] || s[v] || s[0];
+        }
+
+
+        // Attach click handlers to preview buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.preview-btn[data-product]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productId = this.getAttribute('data-product');
+                    openPdfPreview(productId);
+                });
+            });
+
+            // Footer form submission handler
+            const footerForm = document.getElementById('footer-form');
+            if (footerForm) {
+                footerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(footerForm);
+
+                    fetch(footerForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    }).then(response => {
+                        footerForm.style.display = 'none';
+                        document.getElementById('footer-thank-you').style.display = 'block';
+                    }).catch(error => {
+                        footerForm.style.display = 'none';
+                        document.getElementById('footer-thank-you').style.display = 'block';
+                    });
+                });
+            }
+
+            // Mobile touch support for recommendation popups
+            document.querySelectorAll('.rec-author').forEach(author => {
+                author.addEventListener('click', function(e) {
+                    // Close all other popups first
+                    document.querySelectorAll('.rec-author.active').forEach(a => {
+                        if (a !== this) a.classList.remove('active');
+                    });
+                    // Toggle this popup
+                    this.classList.toggle('active');
+                    e.stopPropagation();
+                });
+            });
+
+            // Close popup when tapping outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.rec-author')) {
+                    document.querySelectorAll('.rec-author.active').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                }
+            });
+
+        });
+    </script>
+
+    </body>
+</html>
