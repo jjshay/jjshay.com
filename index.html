@@ -35,8 +35,8 @@
     <meta name="twitter:image" content="https://jjshay.com/og-image.png">
     <meta name="twitter:site" content="@jjshay">
 
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" href="https://jjshay.com/favicon.png">
+    <link rel="apple-touch-icon" href="https://jjshay.com/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,19 +62,7 @@
 
         /* Page load animation */
         .page-wrapper {
-            opacity: 0;
-            animation: fadeInPage 0.8s ease-out 0.1s forwards;
-        }
-
-        @keyframes fadeInPage {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            opacity: 1;
         }
 
         /* Parallax Background */
@@ -220,16 +208,46 @@
             background: linear-gradient(135deg, #A68B2A 0%, #C4A030 50%, #A68B2A 100%);
         }
 
+        .gold-tab:hover .gold-tab-icon {
+            display: none;
+        }
+
+        .gold-tab:hover .gold-tab-text {
+            display: block;
+        }
+
         .gold-tab.active {
             opacity: 1;
-            background: linear-gradient(135deg, #F4CF47 0%, #D4AF37 100%);
+            background: #00CED1;
             box-shadow: inset 0 -3px 0 rgba(10, 22, 40, 0.3);
         }
 
+        .gold-tab.active .gold-tab-icon {
+            display: none;
+        }
+
         .gold-tab.active .gold-tab-text {
+            display: block;
             color: #ffffff;
+            text-shadow: none;
+        }
+
+        .gold-tab-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .gold-tab-text {
+            display: none;
+            font-size: 14px;
             font-weight: 800;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .gold-tab::before {
@@ -247,15 +265,6 @@
             );
             transform: rotate(30deg) translateX(-100%);
             animation: shimmer 3s infinite;
-        }
-
-        .gold-tab-text {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0a1628;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-            z-index: 1;
-            letter-spacing: 1px;
         }
 
         .tab-content {
@@ -451,15 +460,17 @@
 
         .report-card {
             background: rgba(10, 22, 40, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 2px solid rgba(0, 206, 209, 0.2);
             border-radius: 16px;
-            padding: 24px 20px;
+            padding: 0;
             text-align: center;
             transition: all 0.3s ease;
             flex: 0 0 280px;
             scroll-snap-align: start;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+            opacity: 0.7;
+            filter: saturate(0.8) brightness(0.9);
         }
 
         .report-badge {
@@ -477,9 +488,12 @@
         }
 
         .report-card:hover {
-            border-color: rgba(212, 175, 55, 0.5);
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1) brightness(1.05);
+            background: #ffffff;
         }
 
         .report-icon {
@@ -983,9 +997,9 @@
             padding-top: 150px;
             margin-top: -145px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
-            overflow-x: hidden;
-            overflow-y: visible;
+            overflow: hidden;
             position: relative;
+            padding-bottom: 20px;
         }
 
         .linkedin-recs-section::before,
@@ -1030,7 +1044,20 @@
             min-width: 300px;
             max-width: 350px;
             text-align: center;
-            padding: 0 10px;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(10, 22, 40, 0.4);
+            opacity: 0.7;
+            filter: saturate(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-rec:hover {
+            opacity: 1;
+            filter: saturate(1);
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
         }
 
         .rec-text {
@@ -1445,9 +1472,10 @@
         .tagline-stack {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
             justify-content: center;
             height: 119px; /* Match logo height */
+            text-align: right;
         }
 
         .tagline-top {
@@ -2249,12 +2277,813 @@
             font-size: 14px;
             vertical-align: super;
         }
+
+        /* Reports Section Styles - White Cards */
+        .reports-section {
+            padding: 0;
+        }
+
+        .reports-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reports-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 206, 209, 0.15);
+            border: 1px solid rgba(0, 206, 209, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+            color: #00CED1;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .reports-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .reports-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00CED1;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .reports-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .reports-scroll-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 10px 0 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 206, 209, 0.3) transparent;
+            width: 100%;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .reports-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 206, 209, 0.3);
+            border-radius: 3px;
+        }
+
+        .reports-cards {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+            width: max-content;
+        }
+
+        .report-card {
+            flex: 0 0 280px;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(0, 206, 209, 0.2);
+            border-radius: 16px;
+            padding: 0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+            opacity: 0.7;
+            filter: saturate(0.8) brightness(0.9);
+        }
+
+        .report-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(0, 206, 209, 0.2);
+        }
+
+        .report-card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .report-card:hover {
+            transform: translateY(-4px);
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1) brightness(1.05);
+            background: #ffffff;
+        }
+
+        /* Report Card Image Popup on Hover */
+        .report-card {
+            position: relative;
+        }
+
+        .report-card-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+            margin-bottom: 15px;
+        }
+
+        .report-card-popup img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.4);
+            border: 3px solid #D4AF37;
+        }
+
+        .report-card:hover .report-card-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .report-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .report-card-icon {
+            font-size: 28px;
+        }
+
+        .report-card-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 206, 209, 0.15);
+            color: #0a1628;
+        }
+
+        .report-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00CED1;
+            margin: 0 0 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .report-card p {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0 0 12px 0;
+            transition: color 0.3s ease;
+        }
+
+        .report-card:hover h3 {
+            color: #0a1628;
+        }
+
+        .report-card:hover p {
+            color: #0a1628;
+        }
+
+        .report-card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .report-card-features li {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            padding-left: 14px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .report-card:hover .report-card-features li {
+            color: rgba(10, 22, 40, 0.8);
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .report-card-features li::before {
+            content: "•";
+            color: rgba(0, 206, 209, 0.5);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .report-card-download {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .report-card-download:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+        }
+
+        .reports-section-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .report-card {
+                flex: 0 0 260px;
+            }
+            .reports-title {
+                font-size: 24px;
+            }
+        }
+
+        /* GitHub Projects - Original Style with Images */
+        .github-projects-grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 rgba(212, 175, 55, 0.1);
+            min-height: 480px;
+            align-items: stretch;
+        }
+
+        .github-projects-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .github-projects-grid::-webkit-scrollbar-track {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 3px;
+        }
+
+        .github-projects-grid::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        .github-project-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+            position: relative;
+            opacity: 0.7;
+            filter: saturate(0.8);
+            overflow: visible;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 140px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            overflow: visible;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0;
+            border: none;
+        }
+
+        .project-gif {
+            display: none;
+        }
+
+        .github-project-card:hover {
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            filter: saturate(1);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            color: #D4AF37;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .project-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+            align-items: center;
+        }
+
+        .project-tag {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .project-demo {
+            flex: 1;
+            text-align: center;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-demo:hover {
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .project-demo:active {
+            transform: scale(0.98);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        .card-github-logo {
+            width: 16px;
+            height: 16px;
+            margin-left: auto;
+            opacity: 1;
+        }
+
+        .card-github-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* GitHub Section Styles */
+        .github-section {
+            padding: 0;
+        }
+
+        .github-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .github-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+            color: #D4AF37;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .github-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .github-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .github-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .github-scroll-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 10px 0 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+            width: 100%;
+        }
+
+        .github-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .github-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .github-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 3px;
+        }
+
+        .github-cards {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 10px;
+        }
+
+        .github-card {
+            flex: 0 0 260px;
+            background: rgba(20, 40, 80, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .github-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .repo-icon {
+            font-size: 22px;
+        }
+
+        .card-github-logo {
+            width: 16px;
+            height: 16px;
+            fill: rgba(255, 255, 255, 0.5);
+            transition: fill 0.3s ease;
+        }
+
+        .github-card:hover .card-github-logo {
+            fill: #D4AF37;
+        }
+
+        .lang-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-badge.python {
+            background: rgba(53, 114, 165, 0.3);
+            color: #6BA3D6;
+        }
+
+        .lang-badge.js {
+            background: rgba(241, 224, 90, 0.2);
+            color: #F1E05A;
+        }
+
+        .github-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        .github-card p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 6px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            color: rgba(212, 175, 55, 0.8);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 3px 8px;
+            border-radius: 8px;
+        }
+
+        .view-github-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px auto 0;
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #D4AF37;
+            border-radius: 30px;
+            color: #D4AF37;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .view-github-btn:hover {
+            background: #D4AF37;
+            color: #0a1628;
+        }
+
+        .github-icon-sm {
+            width: 18px;
+            height: 18px;
+        }
+
+        .github-section-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+
+        .card-github-link {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .github-card:hover .card-github-link {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .github-card {
+                flex: 0 0 220px;
+            }
+            .github-title {
+                font-size: 24px;
+            }
+        }
+
+        /* YouTube Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 115, 32, 0.95) 0%, rgba(90, 70, 15, 0.98) 50%, rgba(60, 45, 10, 0.98) 100%);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 10002;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .video-modal-close { top: -40px; right: 10px; font-size: 40px; }
+            .video-modal-content { padding: 0 5px; width: 95%; }
+        }
+
+        /* Footer */
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .linkedin-follow-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #0a1628;
+            padding: 10px 20px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+
+        .linkedin-follow-btn:hover {
+            background: #00CED1;
+            color: #0a1628;
+            border-color: #00CED1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            color: white;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #d4af37;
+            transform: scale(1.1);
+        }
+
+        .footer-social svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .site-footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Intro Loading Overlay -->
     <div class="intro-overlay" id="intro-overlay">
-        <img src="logo.png" alt="JJ Shay" class="intro-logo">
+        <img src="https://jjshay.com/logo.png" alt="JJ Shay" class="intro-logo">
     </div>
     <!-- Parallax Background -->
     <div class="parallax-bg"></div>
@@ -2271,27 +3100,35 @@
             <!-- Header: Logo + Tagline -->
             <div class="header-row">
                 <div class="logo-container">
-                    <img src="logo.png" alt="JJ Shay" class="site-logo">
+                    <img src="https://jjshay.com/logo.png" alt="JJ Shay" class="site-logo">
                 </div>
                 <div class="tagline-stack" id="tagline">
                     <span class="tagline-top">Executive</span>
-                    <span class="tagline-bottom">AI Insights</span>
+                    <span class="tagline-bottom">AI Strategy</span>
                 </div>
             </div>
 
             <!-- Horizontal Tab Bar -->
             <div class="tab-bar">
                 <button class="gold-tab active" onclick="switchTab('news')">
-                    <span class="gold-tab-text">News</span>
+                    <svg viewBox="0 0 24 24" class="gold-tab-icon" fill="white"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                    <span class="gold-tab-text">NEWS</span>
                 </button>
                 <button class="gold-tab" onclick="switchTab('briefs')">
-                    <span class="gold-tab-text">Briefs</span>
+                    <img src="briefs.png" alt="Briefs" class="gold-tab-icon">
+                    <span class="gold-tab-text">BRIEFS</span>
                 </button>
                 <button class="gold-tab" onclick="switchTab('reports')">
-                    <span class="gold-tab-text">Reports</span>
+                    <img src="reports.png" alt="Reports" class="gold-tab-icon">
+                    <span class="gold-tab-text">REPORTS</span>
+                </button>
+                <button class="gold-tab" onclick="switchTab('github')">
+                    <img src="github.png" alt="Projects" class="gold-tab-icon">
+                    <span class="gold-tab-text">PROJECTS</span>
                 </button>
                 <button class="gold-tab" onclick="switchTab('about')">
-                    <span class="gold-tab-text">About</span>
+                    <img src="about.png" alt="About" class="gold-tab-icon">
+                    <span class="gold-tab-text">ABOUT</span>
                 </button>
             </div>
 
@@ -2333,96 +3170,288 @@
 
             <!-- Reports Content -->
             <div id="reports" class="tab-content">
-                <div class="glass-card">
-                    <!-- AI Acquisition Playbook -->
-                    <div style="padding: 30px; text-align: center;">
-                        <h3 style="color: #D4AF37; font-size: 28px; font-weight: 700; margin: 0 0 15px 0;"><span style="text-decoration: underline;">THE</span> AI Acquisition Playbook</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 15px; margin: 0 0 10px 0; font-weight: bold;">The CFO & CEO's Definitive Guide to Acquiring AI Companies & Acqui-Hires.</p>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 15px; margin: 0 0 15px 0; font-style: italic; font-weight: bold;">Strategic Frameworks • Due Diligence Protocols • Deal Structures • Valuation Methods • Integration Playbooks</p>
-                        <ul style="list-style: none; padding: 0; margin: 0 0 25px 0; display: inline-block; text-align: left;">
-                            <li style="color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 12px; padding-left: 20px; position: relative;"><span style="color: #D4AF37; position: absolute; left: 0; font-weight: bold;">•</span> 130 pages, 19 chapters, 29 ready-to-use templates including checklists, scripts & scorecards</li>
-                            <li style="color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 12px; padding-left: 20px; position: relative;"><span style="color: #D4AF37; position: absolute; left: 0; font-weight: bold;">•</span> Comprehensive coverage across technical, financial, legal, talent, contracts & post-close integration</li>
-                            <li style="color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 12px; padding-left: 20px; position: relative;"><span style="color: #D4AF37; position: absolute; left: 0; font-weight: bold;">•</span> AI-specific frameworks and valuation methods built for real-world deal execution from LOI to Day 100</li>
-                            <li style="color: rgba(255,255,255,0.85); font-size: 16px; padding-left: 20px; position: relative;"><span style="color: #D4AF37; position: absolute; left: 0; font-weight: bold;">•</span> Rated 5 stars by 36+ executives across M&A, corporate development, finance & strategy functions</li>
-                        </ul>
-                        <div class="download-wrapper">
-                            <span class="playbook-preview">
-                                <img src="playbook.png" alt="AI Acquisition Playbook Cover">
-                            </span>
-                            <a href="https://bit.ly/AI_Download" style="display: inline-block; padding: 19px 29px; background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%); border: none; border-radius: 6px; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; cursor: pointer;">Download</a>
+                <div class="glass-card reports-section">
+                    <div class="reports-section-wrapper">
+                        <div class="reports-scroll-container">
+                            <div class="reports-cards">
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook"></div>
+                                    <img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">130 Pages</span>
+                                        </div>
+                                        <h3>The AI Acquisition Playbook</h3>
+                                        <p>The CFO & CEO's definitive guide to acquiring AI companies and acqui-hires.</p>
+                                        <ul class="report-card-features">
+                                            <li>19 chapters, 29 ready-to-use templates</li>
+                                            <li>Due diligence protocols & valuation methods</li>
+                                            <li>Post-close integration playbooks</li>
+                                        </ul>
+                                        <a href="https://bit.ly/AI_Download" class="report-card-download">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="02-ai-companies-category.png" alt="AI Companies by Category"></div>
+                                    <img src="02-ai-companies-category.png" alt="AI Companies by Category" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">600+ Companies</span>
+                                        </div>
+                                        <h3>AI Companies by Category</h3>
+                                        <p>Comprehensive database of AI companies organized by vertical, use case, and technology.</p>
+                                        <ul class="report-card-features">
+                                            <li>Healthcare, FinTech, Computer Vision & more</li>
+                                            <li>Investment stage & funding data</li>
+                                            <li>M&A target identification</li>
+                                        </ul>
+                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="03-bbp-build.png" alt="BBP: Build"></div>
+                                    <img src="03-bbp-build.png" alt="BBP: Build" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">45 Pages</span>
+                                        </div>
+                                        <h3>BBP: Build</h3>
+                                        <p>When and how to build AI capabilities in-house from scratch.</p>
+                                        <ul class="report-card-features">
+                                            <li>Build vs Buy decision framework</li>
+                                            <li>Team composition & talent acquisition</li>
+                                            <li>Infrastructure & technology stack guides</li>
+                                        </ul>
+                                        <a href="https://gauntlet.gallery/BBP1.pdf" class="report-card-download">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="04-bbp-buy.png" alt="BBP: Buy"></div>
+                                    <img src="04-bbp-buy.png" alt="BBP: Buy" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">52 Pages</span>
+                                        </div>
+                                        <h3>BBP: Buy</h3>
+                                        <p>Strategic acquisition guide for AI companies and acqui-hires.</p>
+                                        <ul class="report-card-features">
+                                            <li>M&A target identification strategies</li>
+                                            <li>Valuation methodologies for AI assets</li>
+                                            <li>Post-merger integration playbook</li>
+                                        </ul>
+                                        <a href="https://gauntlet.gallery/BBP2.pdf" class="report-card-download">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <div class="report-card-popup"><img src="05-bbp-partner.png" alt="BBP: Partner"></div>
+                                    <img src="05-bbp-partner.png" alt="BBP: Partner" class="report-card-image">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">38 Pages</span>
+                                        </div>
+                                        <h3>BBP: Partner</h3>
+                                        <p>Strategic partnership frameworks for AI capability development.</p>
+                                        <ul class="report-card-features">
+                                            <li>Partnership structure options</li>
+                                            <li>Vendor evaluation scorecards</li>
+                                            <li>Contract negotiation playbooks</li>
+                                        </ul>
+                                        <a href="https://gauntlet.gallery/BBP3.pdf" class="report-card-download">Download</a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-
-                    <!-- Testimonials Carousel -->
-                    <div class="testimonials-section">
-                        <div class="testimonials-track">
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Deep knowledge translated into actionable insights. Worth every dollar."</p>
-                                <p class="testimonial-author">— VP Strategy, Fortune 500</p>
+            <!-- GitHub Content -->
+            <div id="github" class="tab-content">
+                <div class="glass-card">
+                    <div class="github-projects-grid">
+                        <!-- AI Book -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/AIBook.jpg" alt="AI Book" class="project-image">
                             </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Tailored perfectly for executive audiences. Our board loved it."</p>
-                                <p class="testimonial-author">— Chief Digital Officer</p>
+                            <div class="project-header">
+                                <h4 class="project-title">AI Book</h4>
                             </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Just what we were looking for. Saved us months of research."</p>
-                                <p class="testimonial-author">— M&A Director</p>
+                            <p class="project-desc">Real-time updated directory of 600+ top private AI companies. Comprehensive analysis including strengths, weaknesses, key metrics, and strategic insights for each company.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2026</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">AI Companies</span>
+                                <span class="project-tag">Research</span>
                             </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Finally, AI analysis that speaks business, not just tech."</p>
-                                <p class="testimonial-author">— CFO, Private Equity</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"The due diligence framework changed how we evaluate AI targets."</p>
-                                <p class="testimonial-author">— Managing Director, VC Firm</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Cut through the AI hype with real substance. Exactly what leadership needed."</p>
-                                <p class="testimonial-author">— CTO, Healthcare Tech</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"The build vs. buy analysis paid for itself in the first week."</p>
-                                <p class="testimonial-author">— SVP Engineering</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Finally understood what questions to ask our AI vendors."</p>
-                                <p class="testimonial-author">— Chief Procurement Officer</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Our M&A team now has a standardized AI evaluation playbook."</p>
-                                <p class="testimonial-author">— Director of Corp Dev</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Shared with my entire C-suite. Required reading for AI strategy."</p>
-                                <p class="testimonial-author">— CEO, Series B Startup</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"The hidden costs analysis saved us from a costly mistake."</p>
-                                <p class="testimonial-author">— VP Finance, Enterprise SaaS</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Practical frameworks, not theoretical fluff. Highly recommend."</p>
-                                <p class="testimonial-author">— Partner, Management Consulting</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Used this to structure our entire AI hiring strategy."</p>
-                                <p class="testimonial-author">— CHRO, Global Tech Company</p>
-                            </div>
-                            <!-- Duplicate for seamless loop -->
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Deep knowledge translated into actionable insights. Worth every dollar."</p>
-                                <p class="testimonial-author">— VP Strategy, Fortune 500</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Tailored perfectly for executive audiences. Our board loved it."</p>
-                                <p class="testimonial-author">— Chief Digital Officer</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">"Just what we were looking for. Saved us months of research."</p>
-                                <p class="testimonial-author">— M&A Director</p>
+                            <div class="project-links">
+                                <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link">View AI Book</a>
                             </div>
                         </div>
+
+                        <!-- Gauntlet COA -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/COA.jpg" alt="Gauntlet COA" class="project-image">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Gauntlet COA</h4>
+                            </div>
+                            <p class="project-desc">Blockchain Certificate of Authenticity system on Polygon. 200+ artworks cataloged. Immutable ownership verification via QR code scanning or manual code entry.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Polygon</span>
+                                <span class="project-tag">Solidity</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://gauntlet-coa-frontend.vercel.app/" target="_blank" class="project-link">View Live</a>
+                                <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+
+                        <!-- News Intelligence -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/news-intelligence.png" alt="News Intelligence" class="project-image">
+                                <img src="01-news-intelligence.gif" alt="News Intelligence Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">News Intelligence</h4>
+                            </div>
+                            <p class="project-desc">Multi-AI news scoring system querying 5 models (Claude, ChatGPT, Perplexity, Grok, Gemini) simultaneously. 3K+ articles scored. Aggregates responses to generate bias-free credibility scores and sentiment analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Multi-AI</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('Y6JEvODTHv4'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- eBay Listing Automation -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/ebay-listing-automation.png" alt="eBay Listing Automation" class="project-image">
+                                <img src="02-ebay-listing.gif" alt="eBay Listing Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">eBay Listing Automation</h4>
+                            </div>
+                            <p class="project-desc">End-to-end eBay listing automation. 500+ listings created, $15K sales in 30 days, 5% promotions. AI vision generates optimized titles, descriptions, item specifics, and competitive pricing from sold comparables.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">eBay API</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Art Crop System -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/art-crop-system.png" alt="Art Crop System" class="project-image">
+                                <img src="03-art-crop.gif" alt="Art Crop Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Art Crop System</h4>
+                            </div>
+                            <p class="project-desc">Two-tier artwork cropping system. 2M+ images processed. Fast rembg for simple backgrounds, then multi-AI consensus (GPT-4V, Claude, Gemini, Grok) for complex scenes. Outputs 8 detail crops per artwork.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('GA8Dm9hZUsk'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Handwriting Analysis -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/handwriting-analysis.png" alt="Handwriting Analysis" class="project-image">
+                                <img src="05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Handwriting Analysis</h4>
+                            </div>
+                            <p class="project-desc">Forensic signature authentication using statistical analysis. 200+ signatures analyzed, 100 baseline examples. Compares against verified baselines using 14 measurable characteristics including slant, pressure, and stroke patterns.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Mockup Generator -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/mockup-generator.png" alt="Mockup Generator" class="project-image">
+                                <img src="04-mockup-generator.gif" alt="Mockup Generator Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Mockup Generator</h4>
+                            </div>
+                            <p class="project-desc">Batch mockup generation for e-commerce. 700+ mockups generated. Automatically places artwork into multiple frame styles and room scenes. Exports 64 size variants optimized for eBay, Etsy, and social platforms.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pillow</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Video Creator -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/product-video-creator.png" alt="Product Video Creator" class="project-image">
+                                <img src="06-google-apps.gif" alt="Product Video Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Product Video Creator</h4>
+                            </div>
+                            <p class="project-desc">Creates Ken Burns style videos from product photos with pan, zoom, and fade effects. 75+ videos created. Generates 45-second videos with text overlays, optimized for eBay, Instagram Reels, and Facebook.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">FFmpeg</span>
+                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('zq5XjYdL_Xs'); return false;" class="project-link project-demo">Watch Demo</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -2498,7 +3527,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/matt-tabas-42ab5789/">— Matt Tabas, Partner at Arnold & Porter
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="48.png" alt="Matt Tabas"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/48.png" alt="Matt Tabas"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Matt Tabas</span>
                                                     <span class="linkedin-popup-title">Partner</span>
@@ -2516,7 +3545,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/whoisdawnbaker/">— Dawn Baker, Leadership Development
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="47.png" alt="Dawn Baker"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/47.png" alt="Dawn Baker"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Dawn Baker</span>
                                                     <span class="linkedin-popup-title">Leadership Development Executive</span>
@@ -2534,7 +3563,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/peterbershatsky/">— Peter Bershatsky, VP Corp Dev at Confluent
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="49.png" alt="Peter Bershatsky"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/49.png" alt="Peter Bershatsky"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Peter Bershatsky</span>
                                                     <span class="linkedin-popup-title">VP Corporate Development</span>
@@ -2552,7 +3581,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/brandoneldredge/">— Brandon Eldredge, CFO at PathAI
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="46.png" alt="Brandon Eldredge"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/46.png" alt="Brandon Eldredge"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Brandon Eldredge</span>
                                                     <span class="linkedin-popup-title">Chief Financial Officer</span>
@@ -2570,7 +3599,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/tchang1/">— Ted Chang, Sr. Director Corp Dev at Adobe
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="52.png" alt="Ted Chang"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/52.png" alt="Ted Chang"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Ted Chang</span>
                                                     <span class="linkedin-popup-title">Sr. Director Corporate Development</span>
@@ -2588,7 +3617,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/neil-williams-3877388/">— Neil Williams, Former EVP & CFO at Intuit
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="50.png" alt="Neil Williams"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/50.png" alt="Neil Williams"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Neil Williams</span>
                                                     <span class="linkedin-popup-title">Former EVP & Chief Financial Officer</span>
@@ -2606,7 +3635,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/company/overcrest-capital-advisors-llc/">— Tim Maynard, MD at Overcrest Capital
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="55.png" alt="Tim Maynard"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/55.png" alt="Tim Maynard"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Tim Maynard</span>
                                                     <span class="linkedin-popup-title">Managing Director</span>
@@ -2624,7 +3653,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/andrew-morbitzer/">— Andrew Morbitzer, Corp Dev Leader
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="54.png" alt="Andrew Morbitzer"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/54.png" alt="Andrew Morbitzer"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Andrew Morbitzer</span>
                                                     <span class="linkedin-popup-title">Corporate Development Leader</span>
@@ -2642,7 +3671,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/mpdonovan04/">— Mike Donovan, VP Corp Finance
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="51.png" alt="Mike Donovan"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/51.png" alt="Mike Donovan"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Mike Donovan</span>
                                                     <span class="linkedin-popup-title">VP Corporate Finance</span>
@@ -2660,7 +3689,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/josephmao/">— Joseph Mao, Executive Director at JPMorgan
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="53.png" alt="Joseph Mao"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/53.png" alt="Joseph Mao"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Joseph Mao</span>
                                                     <span class="linkedin-popup-title">Executive Director</span>
@@ -2679,7 +3708,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/matt-tabas-42ab5789/">— Matt Tabas, Partner at Arnold & Porter
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="48.png" alt="Matt Tabas"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/48.png" alt="Matt Tabas"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Matt Tabas</span>
                                                     <span class="linkedin-popup-title">Partner</span>
@@ -2697,7 +3726,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/whoisdawnbaker/">— Dawn Baker, Leadership Development
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="47.png" alt="Dawn Baker"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/47.png" alt="Dawn Baker"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Dawn Baker</span>
                                                     <span class="linkedin-popup-title">Leadership Development Executive</span>
@@ -2715,7 +3744,7 @@
                                     <p class="rec-author" data-linkedin="https://www.linkedin.com/in/peterbershatsky/">— Peter Bershatsky, VP Corp Dev at Confluent
                                         <span class="linkedin-popup">
                                             <span class="linkedin-popup-header">
-                                                <span class="linkedin-popup-avatar"><img src="49.png" alt="Peter Bershatsky"></span>
+                                                <span class="linkedin-popup-avatar"><img src="https://jjshay.com/49.png" alt="Peter Bershatsky"></span>
                                                 <span class="linkedin-popup-info">
                                                     <span class="linkedin-popup-name">Peter Bershatsky</span>
                                                     <span class="linkedin-popup-title">VP Corporate Development</span>
@@ -2734,15 +3763,13 @@
             </div>
 
             <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-row" style="justify-content: center;">
-                    <form class="footer-signup" id="footer-form" action="https://formspree.io/f/xdakngrp" method="POST">
-                        <input type="email" name="email" placeholder="Weekly AI Insights" class="footer-input" required>
-                        <button type="submit" class="footer-btn">Join</button>
-                    </form>
-                    <p class="thank-you-msg" id="footer-thank-you" style="display: none; color: #22c55e; font-weight: 600; font-size: 14px;">Thanks for signing up!</p>
+            <footer class="site-footer">
+                <a class="linkedin-follow-btn" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jjshay" target="_blank">Follow on LinkedIn</a>
+                <div class="footer-copyright">
+                    © 2026 JJ Shay. All rights reserved.
                 </div>
             </footer>
+
         </div>
     </div>
 
@@ -2764,6 +3791,15 @@
 
 
     <script>
+        // Failsafe: ensure overlay hides even if load event fails on mobile
+        setTimeout(function() {
+            var o = document.getElementById('intro-overlay');
+            if (o && !o.classList.contains('fade-out')) {
+                o.classList.add('fade-out');
+                setTimeout(function() { o.style.display = 'none'; }, 600);
+            }
+        }, 2500);
+
         // Intro Animation Sequence
         window.addEventListener('load', function() {
             const introOverlay = document.getElementById('intro-overlay');
@@ -2784,7 +3820,7 @@
                     setTimeout(function() {
                         taglineTop.classList.add('typing');
 
-                        // After "Executive" typed, remove cursor and fade in "AI Insights"
+                        // After "Executive" typed, remove cursor and fade in "AI Strategy"
                         setTimeout(function() {
                             taglineTop.classList.add('done');
                             taglineBottom.classList.add('typing');
@@ -2797,6 +3833,37 @@
                     introOverlay.style.display = 'none';
                 }, 600);
             }, 500);
+        });
+
+        // YouTube Video Modal functions
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            modal.classList.remove('active');
+            frame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on background click
+        document.getElementById('video-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
         });
 
         // Tab switching function
