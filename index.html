@@ -40,7 +40,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Preload Critical Images -->
+    <link rel="preload" as="image" href="https://jjshay.com/logo.png">
+    <link rel="preload" as="image" href="github.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "JJ Shay",
+        "url": "https://jjshay.com/",
+        "image": "https://jjshay.com/og-image.png",
+        "jobTitle": "AI Executive & Strategist",
+        "description": "Expert analysis, reports, and news on artificial intelligence trends shaping business and technology.",
+        "sameAs": [
+            "https://twitter.com/jjshay",
+            "https://linkedin.com/in/jjshay"
+        ],
+        "knowsAbout": ["Artificial Intelligence", "AI Strategy", "M&A", "Technology Leadership"],
+        "email": "js@jjshay.com"
+    }
+    </script>
+
     <style>
+        /* CSS Variables for Theme Support */
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #1a2d4a;
+            --bg-card: rgba(20, 40, 80, 0.6);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent-gold: #D4AF37;
+            --accent-cyan: #00CED1;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        :root.light-mode {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e8e8e8;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #1a1a1a;
+            --text-secondary: rgba(26, 26, 26, 0.8);
+            --border-gold: rgba(212, 175, 55, 0.5);
+        }
         * {
             margin: 0;
             padding: 0;
@@ -159,6 +203,7 @@
             padding: 32px 24px;
             margin-bottom: 40px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
         }
 
         .glass-card:hover {
@@ -247,7 +292,6 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
             z-index: 1;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
         .gold-tab::before {
@@ -283,14 +327,25 @@
 
         .tab-content .glass-card {
             margin-bottom: 0;
+            min-height: 600px;
         }
 
         /* Tab content consistent spacing */
         #news .glass-card,
         #briefs .glass-card,
         #reports .glass-card,
+        #github .glass-card {
+            padding: 20px;
+            height: 540px;
+            max-height: 540px;
+            overflow: hidden;
+        }
+
         #about .glass-card {
             padding: 20px;
+            height: auto;
+            max-height: none;
+            overflow: visible;
         }
 
         /* Profile Layout */
@@ -318,7 +373,7 @@
             border: 3px solid #D4AF37;
             object-fit: cover;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transition: filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+            transition: filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
         }
 
         .profile-img:hover {
@@ -813,24 +868,25 @@
         }
 
         .nav-arrow {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             background: transparent;
-            color: #D4AF37;
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .nav-arrow:hover {
-            background: rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, #D4AF37 0%, #A68B2A 100%);
             border-color: #D4AF37;
+            color: #ffffff;
         }
 
         .nav-arrow.pulse-right {
-            animation: fadeGold 3s ease-in-out infinite;
+            animation: none;
         }
 
         /* Briefs slider navigation */
@@ -1454,6 +1510,7 @@
 
         .logo-container {
             flex-shrink: 0;
+            position: relative;
         }
 
         .site-logo {
@@ -1466,6 +1523,37 @@
         .site-logo:hover {
             filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
             transform: scale(1.02);
+        }
+
+        .logo-profile-popup {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #D4AF37;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .logo-profile-popup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-container:hover .logo-profile-popup {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .logo-container:hover .site-logo {
+            opacity: 0;
         }
 
         /* Tagline Stack */
@@ -2281,6 +2369,7 @@
         /* Reports Section Styles - White Cards */
         .reports-section {
             padding: 0;
+            overflow: hidden;
         }
 
         .reports-header {
@@ -2324,11 +2413,13 @@
 
         .reports-scroll-container {
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: hidden;
             padding: 10px 0 20px;
             scrollbar-width: thin;
             scrollbar-color: rgba(0, 206, 209, 0.3) transparent;
             width: 100%;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
         }
 
         .reports-scroll-container::-webkit-scrollbar {
@@ -2349,6 +2440,7 @@
             gap: 20px;
             padding-bottom: 10px;
             width: max-content;
+            flex-wrap: nowrap;
         }
 
         .report-card {
@@ -2364,6 +2456,7 @@
             overflow: visible;
             opacity: 0.7;
             filter: saturate(0.8) brightness(0.9);
+            scroll-snap-align: start;
         }
 
         .report-card-image {
@@ -2498,14 +2591,21 @@
             font-weight: bold;
         }
 
+        .report-card-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
         .report-card-download {
+            flex: 1;
             display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            padding: 10px 12px;
+            background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%);
             border: none;
             border-radius: 8px;
             color: #fff;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             text-decoration: none;
             text-align: center;
@@ -2513,6 +2613,7 @@
         }
 
         .report-card-download:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
             transform: scale(1.02);
             box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
         }
@@ -2521,6 +2622,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            overflow: hidden;
         }
 
         @media (max-width: 600px) {
@@ -2627,6 +2730,10 @@
             line-height: 1.5;
             margin: 0 0 12px 0;
             flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .project-tags {
@@ -2655,25 +2762,30 @@
             flex: 1;
             text-align: center;
             padding: 8px 12px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%);
+            border: none;
             border-radius: 6px;
             color: #fff;
             font-size: 12px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .project-link:hover {
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
         .project-demo {
             flex: 1;
             text-align: center;
             padding: 12px 16px;
-            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+            background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%);
             border: none;
             border-radius: 6px;
             color: #fff;
@@ -2691,6 +2803,7 @@
         }
 
         .project-demo:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
@@ -2704,6 +2817,21 @@
             right: 12px;
             background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
             color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        .featured-badge-cyan {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%);
+            color: #fff;
             font-size: 10px;
             font-weight: 700;
             padding: 4px 8px;
@@ -3068,9 +3196,562 @@
                 text-align: center;
             }
         }
+
+        /* ========== NEW FEATURES CSS ========== */
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #D4AF37 0%, #A68B2A 100%);
+            border: none;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Dark/Light Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-gold);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+
+        :root.light-mode .theme-toggle .sun-icon { display: block; }
+        :root.light-mode .theme-toggle .moon-icon { display: none; }
+
+        :root.light-mode body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        :root.light-mode .parallax-bg {
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
+        }
+
+        :root.light-mode .glass-card {
+            background: var(--bg-card);
+            border-color: var(--border-gold);
+        }
+
+        :root.light-mode .orb { opacity: 0.3; }
+
+        /* Scroll Indicators */
+        .scroll-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-container:hover .scroll-arrow {
+            opacity: 1;
+        }
+
+        .scroll-arrow:hover {
+            transform: translateY(-50%) scale(1.1);
+            background: linear-gradient(135deg, #D4AF37 0%, #A68B2A 100%);
+            border-color: #D4AF37;
+            color: #ffffff;
+        }
+
+        .scroll-arrow.left { left: 5px; }
+        .scroll-arrow.right { right: 5px; }
+        .scroll-arrow.hidden { opacity: 0 !important; pointer-events: none; }
+
+        @media (max-width: 768px) {
+            .scroll-arrow { display: none; }
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-card {
+            width: 280px;
+            height: 350px;
+            flex-shrink: 0;
+        }
+
+        .skeleton-image {
+            width: 100%;
+            height: 160px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-text {
+            height: 20px;
+            margin-bottom: 10px;
+            width: 80%;
+        }
+
+        .skeleton-text.short { width: 50%; }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .newsletter-title {
+            color: var(--accent-gold);
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #D4AF37 0%, #A68B2A 100%);
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .newsletter-success {
+            text-align: center;
+            color: var(--accent-cyan);
+            margin-top: 10px;
+            display: none;
+        }
+
+        .newsletter-success.show { display: block; }
+
+        @media (max-width: 500px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(10, 22, 40, 0.6);
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .share-btn.linkedin:hover { background: #0077b5; border-color: #0077b5; }
+        .share-btn.twitter:hover { background: #1da1f2; border-color: #1da1f2; }
+
+        /* Entrance Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+
+        /* Search/Filter */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .no-results {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 40px;
+            display: none;
+        }
+
+        .no-results.show { display: block; }
+
+        /* Tab Tooltips */
+        .gold-tab {
+            position: relative;
+        }
+
+        .tab-tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 22, 40, 0.95);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .gold-tab:hover .tab-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: -35px;
+        }
+
+        /* ========== MOBILE OPTIMIZATIONS ========== */
+
+        /* Touch device detection - hide hover-only elements */
+        @media (hover: none) and (pointer: coarse) {
+            .tab-tooltip {
+                display: none !important;
+            }
+
+            /* On touch devices, always show text for active tab */
+            .gold-tab.active .gold-tab-icon {
+                display: none;
+            }
+            .gold-tab.active .gold-tab-text {
+                display: block;
+            }
+        }
+
+        /* Mobile tab bar - 600px and below */
+        @media (max-width: 600px) {
+            .tab-bar {
+                border-radius: 10px;
+            }
+
+            .gold-tab {
+                padding: 10px 8px;
+                min-height: 50px; /* Ensure 44px+ touch target */
+            }
+
+            .gold-tab-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .gold-tab-text {
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+        }
+
+        /* Small mobile - 500px and below */
+        @media (max-width: 500px) {
+            .tab-bar {
+                border-radius: 8px;
+                margin-bottom: 16px;
+            }
+
+            .gold-tab {
+                padding: 8px 4px;
+                min-height: 48px;
+            }
+
+            .gold-tab-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .gold-tab-text {
+                font-size: 9px;
+                letter-spacing: 0.5px;
+                font-weight: 700;
+            }
+
+            /* Share buttons - ensure touch-friendly */
+            .share-btn {
+                min-width: 44px;
+                min-height: 44px;
+                padding: 10px;
+            }
+
+            /* Project link buttons */
+            .project-link {
+                min-width: 44px;
+                min-height: 44px;
+                padding: 10px 14px;
+            }
+
+            /* Back to top button */
+            .back-to-top {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            /* Theme toggle */
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* Extra small devices (iPhone SE, etc.) - 350px and below */
+        @media (max-width: 350px) {
+            .container {
+                padding: 16px 12px;
+            }
+
+            .tab-bar {
+                border-radius: 6px;
+            }
+
+            .gold-tab {
+                padding: 6px 2px;
+                min-height: 44px;
+            }
+
+            .gold-tab-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .gold-tab-text {
+                font-size: 8px;
+                letter-spacing: 0;
+            }
+
+            .glass-card {
+                padding: 16px 12px;
+                border-radius: 16px;
+            }
+
+            .site-logo {
+                max-width: 60px;
+            }
+
+            .tagline-top,
+            .tagline-bottom {
+                font-size: 16px;
+            }
+
+            .profile-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-name {
+                font-size: 14px;
+            }
+
+            /* Card adjustments */
+            .github-card,
+            .report-card {
+                flex: 0 0 200px;
+            }
+
+            .github-title,
+            .reports-title {
+                font-size: 20px;
+            }
+
+            /* Smaller scroll arrows */
+            .scroll-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+        }
+
+        /* Ensure all interactive elements meet 44px minimum */
+        @media (max-width: 600px) {
+            button,
+            a.project-link,
+            .social-link,
+            .gold-btn {
+                min-height: 44px;
+            }
+
+            /* Footer input touch-friendly */
+            .footer-input,
+            .footer-btn {
+                min-height: 44px;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+        }
+
+        /* Safe area insets for notched devices */
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+            }
+
+            .back-to-top {
+                bottom: max(24px, env(safe-area-inset-bottom));
+                right: max(24px, env(safe-area-inset-right));
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <span class="moon-icon">🌙</span>
+        <span class="sun-icon">☀️</span>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
     <!-- Video Modal -->
     <div class="video-modal" id="video-modal">
         <div class="video-modal-content">
@@ -3101,50 +3782,58 @@
             <div class="header-row">
                 <div class="logo-container">
                     <img src="https://jjshay.com/logo.png" alt="JJ Shay" class="site-logo">
+                    <div class="logo-profile-popup">
+                        <img src="jjshay-profile.jpeg" alt="JJ Shay">
+                    </div>
                 </div>
                 <div class="tagline-stack" id="tagline">
-                    <span class="tagline-top">Executive</span>
-                    <span class="tagline-bottom">AI Strategy</span>
+                    <span class="tagline-top">AI Strategy</span>
+                    <span class="tagline-bottom">Executive</span>
                 </div>
             </div>
 
             <!-- Horizontal Tab Bar -->
-            <div class="tab-bar">
-                <button class="gold-tab active" onclick="switchTab('news')">
-                    <svg viewBox="0 0 24 24" class="gold-tab-icon" fill="white"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
-                    <span class="gold-tab-text">NEWS</span>
+            <div class="tab-bar" role="tablist" aria-label="Content sections">
+                <button class="gold-tab active" onclick="switchTab('github')" role="tab" aria-selected="true" aria-controls="github" tabindex="0">
+                    <img src="https://jjshay.com/github.png" alt="" class="gold-tab-icon" aria-hidden="true">
+                    <span class="gold-tab-text">Github</span>
+                    <span class="tab-tooltip">Github</span>
                 </button>
-                <button class="gold-tab" onclick="switchTab('briefs')">
-                    <img src="briefs.png" alt="Briefs" class="gold-tab-icon">
-                    <span class="gold-tab-text">BRIEFS</span>
+                <button class="gold-tab" onclick="switchTab('reports')" role="tab" aria-selected="false" aria-controls="reports" tabindex="-1">
+                    <img src="https://jjshay.com/reports.png" alt="" class="gold-tab-icon" aria-hidden="true">
+                    <span class="gold-tab-text">Reports</span>
+                    <span class="tab-tooltip">Reports</span>
                 </button>
-                <button class="gold-tab" onclick="switchTab('reports')">
-                    <img src="reports.png" alt="Reports" class="gold-tab-icon">
-                    <span class="gold-tab-text">REPORTS</span>
+                <button class="gold-tab" onclick="switchTab('briefs')" role="tab" aria-selected="false" aria-controls="briefs" tabindex="-1">
+                    <img src="https://jjshay.com/briefs.png" alt="" class="gold-tab-icon" aria-hidden="true">
+                    <span class="gold-tab-text">Briefs</span>
+                    <span class="tab-tooltip">Briefs</span>
                 </button>
-                <button class="gold-tab" onclick="switchTab('github')">
-                    <img src="github.png" alt="Projects" class="gold-tab-icon">
-                    <span class="gold-tab-text">PROJECTS</span>
+                <button class="gold-tab" onclick="switchTab('news')" role="tab" aria-selected="false" aria-controls="news" tabindex="-1">
+                    <svg viewBox="0 0 24 24" class="gold-tab-icon" fill="white" aria-hidden="true"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                    <span class="gold-tab-text">Insights</span>
+                    <span class="tab-tooltip">Insights</span>
                 </button>
-                <button class="gold-tab" onclick="switchTab('about')">
-                    <img src="about.png" alt="About" class="gold-tab-icon">
-                    <span class="gold-tab-text">ABOUT</span>
+                <button class="gold-tab" onclick="switchTab('about')" role="tab" aria-selected="false" aria-controls="about" tabindex="-1">
+                    <img src="https://jjshay.com/about.png" alt="" class="gold-tab-icon" aria-hidden="true">
+                    <span class="gold-tab-text">About</span>
+                    <span class="tab-tooltip">About</span>
                 </button>
             </div>
 
             <!-- News Content -->
-            <div id="news" class="tab-content active">
+            <div id="news" class="tab-content" role="tabpanel" aria-labelledby="news-tab">
                 <div class="glass-card" style="padding: 20px;">
                     <iframe
                         src="https://rss.app/embed/v1/carousel/bJZbxhVRx0Xx77J3"
                         frameborder="0"
-                        style="width: 100%; height: 480px; border: 0;">
+                        style="width: 100%; height: 100%; max-height: 500px; border: 0;">
                     </iframe>
                 </div>
             </div>
 
             <!-- Briefs Content -->
-            <div id="briefs" class="tab-content">
+            <div id="briefs" class="tab-content" role="tabpanel" aria-labelledby="briefs-tab">
                 <div class="glass-card">
                     <!-- Desktop: Double page layout -->
                     <div class="reports-desktop" style="position:relative;padding-top:60%;height:0;width:100%">
@@ -3163,108 +3852,134 @@
                             </div>
                             <button class="nav-arrow pulse-right" onclick="changeBrief(1)">→</button>
                         </div>
-                        <span class="briefs-counter"><span id="current-brief">1</span> of <span id="total-briefs">29</span></span>
+                        <span class="briefs-counter"><span id="current-brief">1</span> of <span id="total-briefs">29</span> briefs</span>
                     </div>
                 </div>
             </div>
 
             <!-- Reports Content -->
-            <div id="reports" class="tab-content">
+            <div id="reports" class="tab-content" role="tabpanel" aria-labelledby="reports-tab">
                 <div class="glass-card reports-section">
+                    <!-- Search Reports -->
+                    <div class="search-container">
+                        <div class="search-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" class="search-input" id="reports-search" placeholder="Search reports..." oninput="filterCards('reports')">
+                        </div>
+                    </div>
+                    <div class="no-results" id="reports-no-results">No reports found</div>
                     <div class="reports-section-wrapper">
-                        <div class="reports-scroll-container">
-                            <div class="reports-cards">
+                        <div class="scroll-container">
+                            <button class="scroll-arrow left" onclick="scrollSection('reports-cards', -1)" aria-label="Scroll left">←</button>
+                            <button class="scroll-arrow right" onclick="scrollSection('reports-cards', 1)" aria-label="Scroll right">→</button>
+                            <div class="reports-scroll-container">
+                                <div class="reports-cards" id="reports-cards">
 
                                 <div class="report-card">
-                                    <div class="report-card-popup"><img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook"></div>
-                                    <img src="01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook" class="report-card-image">
+                                    <div class="report-card-popup"><img src="https://jjshay.com/01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook"></div>
+                                    <img src="https://jjshay.com/01-ai-acquisition-playbook.png" alt="The AI Acquisition Playbook" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
                                         <div class="report-card-header">
-                                            <span class="report-card-badge">130 Pages</span>
+                                            <span class="report-card-badge">115 Pages</span>
                                         </div>
-                                        <h3>The AI Acquisition Playbook</h3>
-                                        <p>The CFO & CEO's definitive guide to acquiring AI companies and acqui-hires.</p>
+                                        <h3>The M&A Playbook</h3>
+                                        <p>The definitive guide to AI M&A</p>
                                         <ul class="report-card-features">
-                                            <li>19 chapters, 29 ready-to-use templates</li>
-                                            <li>Due diligence protocols & valuation methods</li>
-                                            <li>Post-close integration playbooks</li>
+                                            <li>19 chapters, 29 templates</li>
+                                            <li>Due diligence & valuation</li>
+                                            <li>Integration playbooks</li>
                                         </ul>
-                                        <a href="https://bit.ly/AI_Download" class="report-card-download">Download</a>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="02-ai-companies-category.png" alt="AI Companies by Category"></div>
-                                    <img src="02-ai-companies-category.png" alt="AI Companies by Category" class="report-card-image">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">600+ Companies</span>
+                                        <div class="report-card-buttons">
+                                            <a href="Playbook_short.pdf" class="report-card-download">Summary</a>
+                                            <a href="https://bit.ly/AI_Download" class="report-card-download">Full Report</a>
                                         </div>
-                                        <h3>AI Companies by Category</h3>
-                                        <p>Comprehensive database of AI companies organized by vertical, use case, and technology.</p>
-                                        <ul class="report-card-features">
-                                            <li>Healthcare, FinTech, Computer Vision & more</li>
-                                            <li>Investment stage & funding data</li>
-                                            <li>M&A target identification</li>
-                                        </ul>
-                                        <a href="#" class="report-card-download">Coming Soon</a>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://bit.ly/AI_Download')" aria-label="Copy link">🔗</button>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="report-card">
                                     <div class="report-card-popup"><img src="03-bbp-build.png" alt="BBP: Build"></div>
-                                    <img src="03-bbp-build.png" alt="BBP: Build" class="report-card-image">
+                                    <img src="03-bbp-build.png" alt="BBP: Build" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
                                         <div class="report-card-header">
                                             <span class="report-card-badge">45 Pages</span>
                                         </div>
                                         <h3>BBP: Build</h3>
-                                        <p>When and how to build AI capabilities in-house from scratch.</p>
+                                        <p>Build AI capabilities in-house.</p>
                                         <ul class="report-card-features">
-                                            <li>Build vs Buy decision framework</li>
-                                            <li>Team composition & talent acquisition</li>
-                                            <li>Infrastructure & technology stack guides</li>
+                                            <li>Build vs Buy framework</li>
+                                            <li>Team & talent acquisition</li>
+                                            <li>Infrastructure & tech stack</li>
                                         </ul>
-                                        <a href="https://gauntlet.gallery/BBP1.pdf" class="report-card-download">Download</a>
+                                        <div class="report-card-buttons">
+                                            <a href="Build_short.pdf" class="report-card-download">Summary</a>
+                                            <a href="BBP1.pdf" class="report-card-download">Full Report</a>
+                                        </div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Build', 'BBP1.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Build', 'BBP1.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('BBP1.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="report-card">
                                     <div class="report-card-popup"><img src="04-bbp-buy.png" alt="BBP: Buy"></div>
-                                    <img src="04-bbp-buy.png" alt="BBP: Buy" class="report-card-image">
+                                    <img src="04-bbp-buy.png" alt="BBP: Buy" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
                                         <div class="report-card-header">
                                             <span class="report-card-badge">52 Pages</span>
                                         </div>
                                         <h3>BBP: Buy</h3>
-                                        <p>Strategic acquisition guide for AI companies and acqui-hires.</p>
+                                        <p>Acquire AI companies strategically.</p>
                                         <ul class="report-card-features">
-                                            <li>M&A target identification strategies</li>
-                                            <li>Valuation methodologies for AI assets</li>
-                                            <li>Post-merger integration playbook</li>
+                                            <li>M&A target identification</li>
+                                            <li>AI asset valuation</li>
+                                            <li>Post-merger integration</li>
                                         </ul>
-                                        <a href="https://gauntlet.gallery/BBP2.pdf" class="report-card-download">Download</a>
+                                        <div class="report-card-buttons">
+                                            <a href="Buy_short.pdf" class="report-card-download">Summary</a>
+                                            <a href="BBP2.pdf" class="report-card-download">Full Report</a>
+                                        </div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Buy', 'BBP2.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Buy', 'BBP2.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('BBP2.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="report-card">
-                                    <div class="report-card-popup"><img src="05-bbp-partner.png" alt="BBP: Partner"></div>
-                                    <img src="05-bbp-partner.png" alt="BBP: Partner" class="report-card-image">
+                                    <div class="report-card-popup"><img src="BBP3.jpg" alt="BBP: Partner"></div>
+                                    <img src="BBP3.jpg" alt="BBP: Partner" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
                                         <div class="report-card-header">
                                             <span class="report-card-badge">38 Pages</span>
                                         </div>
                                         <h3>BBP: Partner</h3>
-                                        <p>Strategic partnership frameworks for AI capability development.</p>
+                                        <p>Partner for AI capabilities.</p>
                                         <ul class="report-card-features">
-                                            <li>Partnership structure options</li>
-                                            <li>Vendor evaluation scorecards</li>
-                                            <li>Contract negotiation playbooks</li>
+                                            <li>Partnership structures</li>
+                                            <li>Vendor scorecards</li>
+                                            <li>Contract negotiation</li>
                                         </ul>
-                                        <a href="https://gauntlet.gallery/BBP3.pdf" class="report-card-download">Download</a>
+                                        <div class="report-card-buttons">
+                                            <a href="Partner_short.pdf" class="report-card-download">Summary</a>
+                                            <a href="BBP3.pdf" class="report-card-download">Full Report</a>
+                                        </div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Partner', 'BBP3.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Partner', 'BBP3.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('BBP3.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
                                     </div>
                                 </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3272,40 +3987,52 @@
             </div>
 
             <!-- GitHub Content -->
-            <div id="github" class="tab-content">
+            <div id="github" class="tab-content active" role="tabpanel" aria-labelledby="github-tab">
                 <div class="glass-card">
-                    <div class="github-projects-grid">
-                        <!-- AI Book -->
+                    <!-- Search Projects -->
+                    <div class="search-container">
+                        <div class="search-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" class="search-input" id="github-search" placeholder="Search projects..." oninput="filterCards('github')">
+                        </div>
+                    </div>
+                    <div class="no-results" id="github-no-results">No projects found</div>
+                    <div class="scroll-container">
+                        <button class="scroll-arrow left" onclick="scrollSection('github-projects-grid', -1)" aria-label="Scroll left">←</button>
+                        <button class="scroll-arrow right" onclick="scrollSection('github-projects-grid', 1)" aria-label="Scroll right">→</button>
+                        <div class="github-projects-grid" id="github-projects-grid">
+                        <!-- The AI Book -->
                         <div class="github-project-card">
-                            <span class="featured-badge">Featured</span>
+                            <span class="featured-badge-cyan">Featured</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/AIBook.jpg" alt="AI Book" class="project-image">
+                                <img src="https://jjshay.com/02-ai-companies-category.png" alt="The AI Book" class="project-image" loading="lazy">
                             </div>
                             <div class="project-header">
-                                <h4 class="project-title">AI Book</h4>
+                                <h4 class="project-title">The AI Book</h4>
                             </div>
-                            <p class="project-desc">Real-time updated directory of 600+ top private AI companies. Comprehensive analysis including strengths, weaknesses, key metrics, and strategic insights for each company.</p>
+                            <p class="project-desc">Directory of 600+ top private AI companies with strengths, weaknesses, and strategic insights.</p>
                             <div class="project-tags">
                                 <span class="project-tag">2026</span>
                                 <span class="project-tag">Solo</span>
-                                <span class="project-tag">AI Companies</span>
+                                <span class="project-tag">AI</span>
                                 <span class="project-tag">Research</span>
                             </div>
                             <div class="project-links">
-                                <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link">View AI Book</a>
+                                <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link">View Live</a>
+                                <a href="https://github.com/jjshay/AI-book" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                         </div>
 
                         <!-- Gauntlet COA -->
                         <div class="github-project-card">
-                            <span class="featured-badge">Featured</span>
+                            <span class="featured-badge-cyan">Featured</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/COA.jpg" alt="Gauntlet COA" class="project-image">
+                                <img src="https://jjshay.com/COA.jpg" alt="Gauntlet COA" class="project-image" loading="lazy">
                             </div>
                             <div class="project-header">
                                 <h4 class="project-title">Gauntlet COA</h4>
                             </div>
-                            <p class="project-desc">Blockchain Certificate of Authenticity system on Polygon. 200+ artworks cataloged. Immutable ownership verification via QR code scanning or manual code entry.</p>
+                            <p class="project-desc">Blockchain COA system combating AI fraud. Authenticates art using Polygon NFT technology. 200+ artworks cataloged.</p>
                             <div class="project-tags">
                                 <span class="project-tag">2025</span>
                                 <span class="project-tag">Solo</span>
@@ -3314,154 +4041,154 @@
                             </div>
                             <div class="project-links">
                                 <a href="https://gauntlet-coa-frontend.vercel.app/" target="_blank" class="project-link">View Live</a>
-                                <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link">GitHub</a>
-                            </div>
-                        </div>
-
-                        <!-- News Intelligence -->
-                        <div class="github-project-card">
-                            <span class="featured-badge">Featured</span>
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/news-intelligence.png" alt="News Intelligence" class="project-image">
-                                <img src="01-news-intelligence.gif" alt="News Intelligence Demo" class="project-gif">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">News Intelligence</h4>
-                            </div>
-                            <p class="project-desc">Multi-AI news scoring system querying 5 models (Claude, ChatGPT, Perplexity, Grok, Gemini) simultaneously. 3K+ articles scored. Aggregates responses to generate bias-free credibility scores and sentiment analysis.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2025</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Multi-AI</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" onclick="openVideoModal('Y6JEvODTHv4'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                         </div>
 
                         <!-- eBay Listing Automation -->
                         <div class="github-project-card">
-                            <span class="featured-badge">Featured</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/ebay-listing-automation.png" alt="eBay Listing Automation" class="project-image">
-                                <img src="02-ebay-listing.gif" alt="eBay Listing Demo" class="project-gif">
+                                <img src="https://jjshay.com/ebay-listing-automation.png" alt="eBay Listing Automation" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/02-ebay-listing.gif" alt="eBay Listing Demo" class="project-gif">
                             </div>
                             <div class="project-header">
                                 <h4 class="project-title">eBay Listing Automation</h4>
                             </div>
-                            <p class="project-desc">End-to-end eBay listing automation. 500+ listings created, $15K sales in 30 days, 5% promotions. AI vision generates optimized titles, descriptions, item specifics, and competitive pricing from sold comparables.</p>
+                            <p class="project-desc">End-to-end eBay automation. 500+ listings, $15K sales in 30 days. AI generates titles, descriptions, and pricing.</p>
                             <div class="project-tags">
                                 <span class="project-tag">2025</span>
                                 <span class="project-tag">Solo</span>
                                 <span class="project-tag">Python</span>
                                 <span class="project-tag">eBay API</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
                             </div>
                             <div class="project-links">
                                 <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-link project-demo">Watch Demo</a>
-                            </div>
-                        </div>
-
-                        <!-- Art Crop System -->
-                        <div class="github-project-card">
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/art-crop-system.png" alt="Art Crop System" class="project-image">
-                                <img src="03-art-crop.gif" alt="Art Crop Demo" class="project-gif">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">Art Crop System</h4>
-                            </div>
-                            <p class="project-desc">Two-tier artwork cropping system. 2M+ images processed. Fast rembg for simple backgrounds, then multi-AI consensus (GPT-4V, Claude, Gemini, Grok) for complex scenes. Outputs 8 detail crops per artwork.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2025</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">OpenCV</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" onclick="openVideoModal('GA8Dm9hZUsk'); return false;" class="project-link project-demo">Watch Demo</a>
-                            </div>
-                        </div>
-
-                        <!-- Handwriting Analysis -->
-                        <div class="github-project-card">
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/handwriting-analysis.png" alt="Handwriting Analysis" class="project-image">
-                                <img src="05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">Handwriting Analysis</h4>
-                            </div>
-                            <p class="project-desc">Forensic signature authentication using statistical analysis. 200+ signatures analyzed, 100 baseline examples. Compares against verified baselines using 14 measurable characteristics including slant, pressure, and stroke patterns.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2025</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">OpenCV</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-link project-demo">Watch Demo</a>
-                            </div>
-                        </div>
-
-                        <!-- Mockup Generator -->
-                        <div class="github-project-card">
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/mockup-generator.png" alt="Mockup Generator" class="project-image">
-                                <img src="04-mockup-generator.gif" alt="Mockup Generator Demo" class="project-gif">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">Mockup Generator</h4>
-                            </div>
-                            <p class="project-desc">Batch mockup generation for e-commerce. 700+ mockups generated. Automatically places artwork into multiple frame styles and room scenes. Exports 64 size variants optimized for eBay, Etsy, and social platforms.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2025</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Pillow</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/ebay-listing-automation" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                         </div>
 
                         <!-- Product Video Creator -->
                         <div class="github-project-card">
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/product-video-creator.png" alt="Product Video Creator" class="project-image">
-                                <img src="06-google-apps.gif" alt="Product Video Demo" class="project-gif">
+                                <img src="https://jjshay.com/product-video-creator.png" alt="Product Video Creator" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/06-google-apps.gif" alt="Product Video Demo" class="project-gif">
                             </div>
                             <div class="project-header">
                                 <h4 class="project-title">Product Video Creator</h4>
                             </div>
-                            <p class="project-desc">Creates Ken Burns style videos from product photos with pan, zoom, and fade effects. 75+ videos created. Generates 45-second videos with text overlays, optimized for eBay, Instagram Reels, and Facebook.</p>
+                            <p class="project-desc">Ken Burns style product videos with pan, zoom, and fade effects. 75+ videos created for eBay and social.</p>
                             <div class="project-tags">
                                 <span class="project-tag">2025</span>
                                 <span class="project-tag">Solo</span>
                                 <span class="project-tag">Python</span>
                                 <span class="project-tag">FFmpeg</span>
-                                <span class="card-github-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span>
                             </div>
                             <div class="project-links">
                                 <a href="#" onclick="openVideoModal('zq5XjYdL_Xs'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/product-video-creator" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                         </div>
 
+                        <!-- Intelligence Engine -->
+                        <div class="github-project-card">
+                            <span class="featured-badge">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/news-intelligence.png" alt="Intelligence Engine" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/01-news-intelligence.gif" alt="Intelligence Engine Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Intelligence Engine</h4>
+                            </div>
+                            <p class="project-desc">Multi-AI scoring querying 5 models simultaneously. 3K+ articles scored with bias-free credibility analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Multi-AI</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('Y6JEvODTHv4'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+
+                        <!-- Art Crop System -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/art-crop-system.png" alt="Art Crop System" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/03-art-crop.gif" alt="Art Crop Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Art Crop System</h4>
+                            </div>
+                            <p class="project-desc">Two-tier cropping with multi-AI consensus. 2M+ images processed. Outputs 8 detail crops per artwork.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('GA8Dm9hZUsk'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/art-crop-system" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+
+                        <!-- Handwriting Analysis -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/handwriting-analysis.png" alt="Handwriting Analysis" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Handwriting Analysis</h4>
+                            </div>
+                            <p class="project-desc">Forensic signature authentication. 200+ signatures analyzed against 14 measurable characteristics.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/handwriting-analysis" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+
+                        <!-- Mockup Generator -->
+                        <div class="github-project-card">
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/mockup-generator.png" alt="Mockup Generator" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/04-mockup-generator.gif" alt="Mockup Generator Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Mockup Generator</h4>
+                            </div>
+                            <p class="project-desc">Batch mockup generation. 700+ mockups created. Places artwork into frames and rooms with 64 size variants.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pillow</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-link project-demo">Watch Demo</a>
+                                <a href="https://github.com/jjshay/mockup-generator" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- About Content -->
-            <div id="about" class="tab-content">
+            <div id="about" class="tab-content" role="tabpanel" aria-labelledby="about-tab">
                     <div class="glass-card">
                         <div class="about-layout">
                             <div class="profile-header">
-                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="John (JJ) Shay" class="profile-img">
+                                <img src="https://gauntlet.gallery/images/js.jpeg" alt="John (JJ) Shay" class="profile-img" id="profile-img-toggle">
                                 <div class="profile-info">
                                     <h3 class="profile-name">John (JJ) Shay</h3>
                                     <div class="profile-buttons">
@@ -3505,17 +4232,20 @@
                                         <a href="https://www.philips.com/a-w/about.html" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Philips_logo_new.svg/1200px-Philips_logo_new.svg.png" alt="Philips" class="company-logo logo-philips"></a>
                                     </div>
                                 </div>
-                                <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; text-align: left; margin-top: 15px;">
-                                    A <a href="https://www.babson.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Babson College</strong></a> graduate with executive training from <a href="https://www.harvard.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Harvard</strong></a>, <a href="https://www.mit.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">MIT</strong></a>, and <a href="https://www.stanford.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Stanford</strong></a>, JJ's <strong style="color: #D4AF37;">obsession with AI started early</strong>—watching Data on Star Trek and seeing a roadmap, not science fiction. <strong style="color: #D4AF37;">When the AI wave accelerated</strong>, he went all in—<strong style="color: #D4AF37;">building 10+ production AI systems hands-on</strong>. Today, he shares insights with 9,200+ executives and AI leaders, breaking down hype from what's actionable to <strong style="color: #D4AF37;">bridge technical depth with business clarity</strong>.
-                                </p>
-                                <!-- School Logos -->
-                                <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
-                                    <div class="company-logos-row" style="margin-bottom: 0; justify-content: flex-start;">
-                                        <a href="https://www.babson.edu/about/" target="_blank"><img src="https://jjshay.com/1.png" alt="Babson College" class="company-logo logo-babson"></a>
-                                        <a href="https://www.harvard.edu/about/" target="_blank"><img src="https://jjshay.com/2.png" alt="Harvard" class="company-logo logo-harvard"></a>
-                                        <a href="https://www.mit.edu/about/" target="_blank"><img src="https://jjshay.com/4.png" alt="MIT" class="company-logo logo-mit"></a>
-                                        <a href="https://www.stanford.edu/about/" target="_blank"><img src="https://jjshay.com/3.png" alt="Stanford" class="company-logo logo-stanford"></a>
-                                    </div>
+                            </div>
+                        </div>
+                        <!-- Second paragraph - full width below -->
+                        <div style="padding: 0 15px;">
+                            <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; text-align: left;">
+                                A <a href="https://www.babson.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Babson College</strong></a> graduate with executive training from <a href="https://www.harvard.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Harvard</strong></a>, <a href="https://www.mit.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">MIT</strong></a>, and <a href="https://www.stanford.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Stanford</strong></a>, JJ's <strong style="color: #D4AF37;">obsession with AI started early</strong>—watching Data on Star Trek and seeing a roadmap, not science fiction. <strong style="color: #D4AF37;">When the AI wave accelerated</strong>, he went all in—<strong style="color: #D4AF37;">building 10+ production AI systems hands-on</strong>. Today, he shares insights with 9,200+ executives and AI leaders, breaking down hype from what's actionable to <strong style="color: #D4AF37;">bridge technical depth with business clarity</strong>.
+                            </p>
+                            <!-- School Logos -->
+                            <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
+                                <div class="company-logos-row" style="margin-bottom: 0; justify-content: flex-start;">
+                                    <a href="https://www.babson.edu/about/" target="_blank"><img src="https://jjshay.com/1.png" alt="Babson College" class="company-logo logo-babson"></a>
+                                    <a href="https://www.harvard.edu/about/" target="_blank"><img src="https://jjshay.com/2.png" alt="Harvard" class="company-logo logo-harvard"></a>
+                                    <a href="https://www.mit.edu/about/" target="_blank"><img src="https://jjshay.com/4.png" alt="MIT" class="company-logo logo-mit"></a>
+                                    <a href="https://www.stanford.edu/about/" target="_blank"><img src="https://jjshay.com/3.png" alt="Stanford" class="company-logo logo-stanford"></a>
                                 </div>
                             </div>
                         </div>
@@ -3759,12 +4489,13 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
             </div>
 
             <!-- Footer -->
             <footer class="site-footer">
-                <a class="linkedin-follow-btn" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jjshay" target="_blank">Follow on LinkedIn</a>
+                <a class="linkedin-follow-btn" href="https://www.linkedin.com/in/jjshay/" target="_blank">Follow on LinkedIn</a>
                 <div class="footer-copyright">
                     © 2026 JJ Shay. All rights reserved.
                 </div>
@@ -3816,11 +4547,11 @@
                 setTimeout(function() {
                     headerRow.classList.add('animate');
 
-                    // After header bounces, type "Executive"
+                    // After header bounces, type "AI Strategy"
                     setTimeout(function() {
                         taglineTop.classList.add('typing');
 
-                        // After "Executive" typed, remove cursor and fade in "AI Strategy"
+                        // After "AI Strategy" typed, remove cursor and fade in "Executive"
                         setTimeout(function() {
                             taglineTop.classList.add('done');
                             taglineBottom.classList.add('typing');
@@ -3869,11 +4600,17 @@
         // Tab switching function
         function switchTab(tabId) {
             // Remove active class from all tabs and content
-            document.querySelectorAll('.gold-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.gold-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+                tab.setAttribute('tabindex', '-1');
+            });
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
             // Add active class to clicked tab and corresponding content
             event.currentTarget.classList.add('active');
+            event.currentTarget.setAttribute('aria-selected', 'true');
+            event.currentTarget.setAttribute('tabindex', '0');
             document.getElementById(tabId).classList.add('active');
         }
 
@@ -4133,7 +4870,183 @@
                 }
             });
 
+            // ========== NEW FEATURES JAVASCRIPT ==========
+
+            // Back to Top Button
+            const backToTop = document.getElementById('back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Dark/Light Mode Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('light-mode');
+                const isLight = document.documentElement.classList.contains('light-mode');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+
+            // Keyboard Navigation for Tabs
+            const tabs = document.querySelectorAll('.gold-tab');
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('keydown', function(e) {
+                    let newIndex;
+                    if (e.key === 'ArrowRight') {
+                        newIndex = (index + 1) % tabs.length;
+                    } else if (e.key === 'ArrowLeft') {
+                        newIndex = (index - 1 + tabs.length) % tabs.length;
+                    } else if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        tab.click();
+                        return;
+                    } else {
+                        return;
+                    }
+                    e.preventDefault();
+                    tabs[newIndex].focus();
+                    tabs[newIndex].click();
+                });
+            });
+
+            // Entrance Animations with Intersection Observer
+            const animateOnScroll = document.querySelectorAll('.github-project-card, .report-card');
+            animateOnScroll.forEach(el => el.classList.add('animate-on-scroll'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animateOnScroll.forEach(el => observer.observe(el));
+
+            // Favicon Animation
+            const favicon = document.querySelector('link[rel="icon"]');
+            const faviconStates = ['https://jjshay.com/favicon.png'];
+            let faviconIndex = 0;
+            // Simple pulse effect by updating title (subtle)
+            setInterval(() => {
+                const title = document.title;
+                document.title = title.endsWith(' ') ? title.trim() : title + ' ';
+            }, 2000);
+
         });
+
+        // Scroll Section (for scroll arrows)
+        function scrollSection(containerId, direction) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                const scrollAmount = 300 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Filter Cards (for search)
+        function filterCards(section) {
+            const searchInput = document.getElementById(section + '-search');
+            const query = searchInput.value.toLowerCase();
+            let container, cards, noResults;
+
+            if (section === 'github') {
+                container = document.getElementById('github-projects-grid');
+                cards = container.querySelectorAll('.github-project-card');
+                noResults = document.getElementById('github-no-results');
+            } else if (section === 'reports') {
+                container = document.getElementById('reports-cards');
+                cards = container.querySelectorAll('.report-card');
+                noResults = document.getElementById('reports-no-results');
+            }
+
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('show', visibleCount === 0);
+        }
+
+        // Share Report
+        function shareReport(title, url, platform) {
+            const text = `Check out "${title}" by JJ Shay`;
+            let shareUrl;
+
+            if (platform === 'linkedin') {
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+            } else if (platform === 'twitter') {
+                shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            }
+
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        // Copy Link
+        function copyLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(() => {
+                // Fallback
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        // Newsletter Handler
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            const successMsg = document.getElementById('newsletter-success');
+
+            // Here you would typically send to your email service
+            // For now, just show success message
+            successMsg.classList.add('show');
+            document.getElementById('newsletter-email').value = '';
+
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
+
+        // Profile Image Toggle (photo <-> logo every 5 seconds)
+        (function() {
+            const profileImg = document.getElementById('profile-img-toggle');
+            if (profileImg) {
+                const photoSrc = 'https://gauntlet.gallery/images/js.jpeg';
+                const logoSrc = 'https://jjshay.com/logo.png';
+                let showingPhoto = true;
+
+                setInterval(() => {
+                    profileImg.style.opacity = '0';
+                    setTimeout(() => {
+                        showingPhoto = !showingPhoto;
+                        profileImg.src = showingPhoto ? photoSrc : logoSrc;
+                        profileImg.style.opacity = '1';
+                    }, 300);
+                }, 5000);
+            }
+        })();
+
     </script>
 
     </body>
