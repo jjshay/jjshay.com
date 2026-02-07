@@ -357,8 +357,18 @@
             line-height: 2.0 !important;
         }
 
+        #github .project-header {
+            display: none;
+        }
+        #github .project-rank {
+            display: none;
+        }
         #github .project-desc {
-            line-height: 2.0 !important;
+            line-height: 1.5 !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
 
@@ -1508,11 +1518,11 @@
             color: #fff;
         }
 
-        /* Header with logo left, tagline right */
+        /* Header with logo left, tagline next to it */
         .header-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 16px;
             margin-bottom: 16px;
             padding: 0;
         }
@@ -1569,20 +1579,19 @@
         .tagline-stack {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-start;
             justify-content: center;
             height: 119px; /* Match logo height */
-            text-align: right;
+            text-align: left;
         }
 
         .tagline-top {
             color: #ffffff;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             font-style: italic;
             letter-spacing: 1px;
             opacity: 1;
-            white-space: nowrap;
         }
 
         .tagline-bottom {
@@ -2768,7 +2777,16 @@
                 font-size: 22px;
             }
             .sort-controls {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                gap: 4px !important;
+            }
+            .sort-controls select {
+                padding: 6px 4px !important;
+                font-size: 11px !important;
+                min-width: 0;
+            }
+            .sort-controls span {
+                font-size: 11px !important;
             }
         }
 
@@ -2820,7 +2838,7 @@
         .project-image-wrapper {
             position: relative;
             width: 100%;
-            height: 140px;
+            aspect-ratio: 1 / 1;
             margin-bottom: 12px;
             border-radius: 8px;
             overflow: hidden;
@@ -2829,7 +2847,7 @@
 
         .project-image {
             width: 100%;
-            height: 140px;
+            height: 100%;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 0;
@@ -4232,43 +4250,20 @@
         }
 
         /* Sticky Tab Bar */
-        .hero-metrics {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            margin: 8px 0 12px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(212,175,55,0.15);
-            border-radius: 10px;
-        }
-
-        .hero-metric {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
         .hero-rotator {
-            transition: opacity 0.4s ease;
+            display: inline;
+            border-right: 2px solid rgba(255,255,255,0.7);
+            padding-right: 2px;
+            animation: blink-cursor 0.7s step-end infinite;
         }
 
-        .hero-metric-value {
-            font-size: 22px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
+        .hero-rotator.no-cursor {
+            border-right-color: transparent;
+            animation: none;
         }
 
-        .hero-metric-label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        @keyframes blink-cursor {
+            50% { border-right-color: transparent; }
         }
 
         .tab-bar {
@@ -4508,15 +4503,7 @@
                     </div>
                 </div>
                 <div class="tagline-stack" id="tagline">
-                    <span class="tagline-top">AI Strategist</span>
-                </div>
-            </div>
-
-            <!-- Hero Metrics Bar -->
-            <div class="hero-metrics">
-                <div class="hero-metric hero-rotator" id="hero-rotator">
-                    <span class="hero-metric-value" id="hero-rotating-value">15+</span>
-                    <span class="hero-metric-label" id="hero-rotating-label">Years Experience</span>
+                    <span class="tagline-top hero-rotator" id="hero-rotator"></span>
                 </div>
             </div>
 
@@ -4575,8 +4562,8 @@
                                     <option value="hot">Hot</option>
                                     <option value="newest">Newest</option>
                                     <option value="alpha">A-Z</option>
-                                    <option value="pages-desc">Pages (High-Low)</option>
-                                    <option value="pages-asc">Pages (Low-High)</option>
+                                    <option value="pages-desc">Pages ↓</option>
+                                    <option value="pages-asc">Pages ↑</option>
                                 </select>
                             </div>
                         </div>
@@ -4596,7 +4583,8 @@
                             <div class="reports-scroll-container">
                                 <div class="reports-cards" id="reports-cards">
 
-                                <!-- 2026-2027 AI M&A Landscape - FEATURED -->
+
+                                <!-- 2026-2027 AI M&A Landscape -->
                                 <div class="report-card">
                                     <span class="featured-badge">Featured</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-ma-landscape-2026.png" alt="2026-2027 AI M&A Landscape"></div>
@@ -4621,6 +4609,371 @@
                                             <button class="share-btn linkedin" onclick="shareReport('AI M&A Landscape 2026-2027', 'https://jjshay.com/2026%E2%80%932027%20AI%20M%26A%20Landscape%20_%20By%20Acquiring%20Company.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
                                             <button class="share-btn twitter" onclick="shareReport('AI M&A Landscape 2026-2027', 'https://jjshay.com/2026%E2%80%932027%20AI%20M%26A%20Landscape%20_%20By%20Acquiring%20Company.pdf', 'twitter')" aria-label="Share on Twitter">&#x1D54F;</button>
                                             <button class="share-btn" onclick="copyLink('https://jjshay.com/2026%E2%80%932027%20AI%20M%26A%20Landscape%20_%20By%20Acquiring%20Company.pdf')" aria-label="Copy link">&#x1F517;</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- AI ROI Ultimate Guide - FEATURED -->
+                                <div class="report-card">
+                                    <span class="featured-badge">Featured</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-roi-ultimate-guide.png" alt="AI ROI Ultimate Guide"></div>
+                                    <img src="https://jjshay.com/ai-roi-ultimate-guide.png" alt="AI ROI Ultimate Guide" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">30 Pages</span>
+                                            <span class="reading-time">(~15 min)</span>
+                                        </div>
+                                        <h3>AI ROI Ultimate Guide</h3>
+                                        <p>Measuring AI's real value for companies.</p>
+                                        <ul class="report-card-features">
+                                            <li>ROI frameworks</li>
+                                            <li>Hidden cost analysis</li>
+                                            <li>Industry benchmarks</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI_ROI_Ultimate_Guide.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI ROI Ultimate Guide', 'https://jjshay.com/AI_ROI_Ultimate_Guide.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI ROI Ultimate Guide', 'https://jjshay.com/AI_ROI_Ultimate_Guide.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_ROI_Ultimate_Guide.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="featured-badge">Featured</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/Playbook.jpg" alt="The AI Acquisition Playbook"></div>
+                                    <img src="https://jjshay.com/Playbook.jpg" alt="The AI Acquisition Playbook" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">115 Pages</span>
+                                        </div>
+                                        <h3>The M&A Playbook</h3>
+                                        <p>The definitive guide to AI M&A</p>
+                                        <ul class="report-card-features">
+                                            <li>19 chapters, 29 templates</li>
+                                            <li>Due diligence & valuation</li>
+                                            <li>Integration playbooks</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/Playbook_short.pdf" class="report-card-download" target="_blank">Summary</a>
+                                            <a href="https://bit.ly/AI_Download" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">12 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://bit.ly/AI_Download')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- AI Companies Intelligence -->
+                                <div class="report-card">
+                                    <span class="featured-badge">Featured</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-companies-intelligence.png" alt="AI Companies Intelligence"></div>
+                                    <img src="https://jjshay.com/ai-companies-intelligence.png" alt="AI Companies Intelligence" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">28 Pages</span>
+                                        </div>
+                                        <h3>AI Companies Intelligence</h3>
+                                        <p>Deep dive on top AI companies.</p>
+                                        <ul class="report-card-features">
+                                            <li>Company analysis</li>
+                                            <li>Market positioning</li>
+                                            <li>Competitive landscape</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">1 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Companies Intelligence', 'https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Companies Intelligence', 'https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- AI Acquisition Targets -->
+                                <div class="report-card">
+                                    <span class="featured-badge">Featured</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-acquisition-targets.png" alt="AI Acquisition Targets"></div>
+                                    <img src="https://jjshay.com/ai-acquisition-targets.png" alt="AI Acquisition Targets" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">16 Pages</span>
+                                        </div>
+                                        <h3>AI Acquisition Targets</h3>
+                                        <p>Top AI companies for M&A.</p>
+                                        <ul class="report-card-features">
+                                            <li>Target analysis</li>
+                                            <li>Valuation metrics</li>
+                                            <li>Strategic fit</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI_Acquisition_Targets_Report.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">3 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Acquisition Targets', 'https://jjshay.com/AI_Acquisition_Targets_Report.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Acquisition Targets', 'https://jjshay.com/AI_Acquisition_Targets_Report.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Acquisition_Targets_Report.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP1.jpg" alt="BBP: Build"></div>
+                                    <img src="https://jjshay.com/BBP1.jpg" alt="BBP: Build" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">45 Pages</span>
+                                        </div>
+                                        <h3>BBP: Build</h3>
+                                        <p>Build AI capabilities in-house.</p>
+                                        <ul class="report-card-features">
+                                            <li>Build vs Buy framework</li>
+                                            <li>Team & talent acquisition</li>
+                                            <li>Infrastructure & tech stack</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/Build_short.pdf" class="report-card-download" target="_blank">Summary</a>
+                                            <a href="https://jjshay.com/BBP1.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">8 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Build', 'https://jjshay.com/BBP1.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Build', 'https://jjshay.com/BBP1.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP1.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP2.jpg" alt="BBP: Buy"></div>
+                                    <img src="https://jjshay.com/BBP2.jpg" alt="BBP: Buy" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">52 Pages</span>
+                                        </div>
+                                        <h3>BBP: Buy</h3>
+                                        <p>Acquire AI companies strategically.</p>
+                                        <ul class="report-card-features">
+                                            <li>M&A target identification</li>
+                                            <li>AI asset valuation</li>
+                                            <li>Post-merger integration</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/Buy_short.pdf" class="report-card-download" target="_blank">Summary</a>
+                                            <a href="https://jjshay.com/BBP2.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">15 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Buy', 'https://jjshay.com/BBP2.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Buy', 'https://jjshay.com/BBP2.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP2.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP3.jpg" alt="BBP: Partner"></div>
+                                    <img src="https://jjshay.com/BBP3.jpg" alt="BBP: Partner" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">38 Pages</span>
+                                        </div>
+                                        <h3>BBP: Partner</h3>
+                                        <p>Partner for AI capabilities.</p>
+                                        <ul class="report-card-features">
+                                            <li>Partnership structures</li>
+                                            <li>Vendor scorecards</li>
+                                            <li>Contract negotiation</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/Partner_short.pdf" class="report-card-download" target="_blank">Summary</a>
+                                            <a href="https://jjshay.com/BBP3.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">6 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Partner', 'https://jjshay.com/BBP3.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('BBP: Partner', 'https://jjshay.com/BBP3.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP3.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-cybersecurity.png" alt="AI in Cybersecurity"></div>
+                                    <img src="https://jjshay.com/ai-cybersecurity.png" alt="AI in Cybersecurity" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">20 Pages</span>
+                                        </div>
+                                        <h3>AI in Cybersecurity</h3>
+                                        <p>AI-powered threat detection & defense.</p>
+                                        <ul class="report-card-features">
+                                            <li>Threat intelligence</li>
+                                            <li>Automated response</li>
+                                            <li>Vulnerability analysis</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">7 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI in Cybersecurity', 'https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI in Cybersecurity', 'https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-vendor-bs-detector.png" alt="AI Vendor BS Detector"></div>
+                                    <img src="https://jjshay.com/ai-vendor-bs-detector.png" alt="AI Vendor BS Detector" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">12 Pages</span>
+                                        </div>
+                                        <h3>AI Vendor BS Detector</h3>
+                                        <p>Cutting through AI hype.</p>
+                                        <ul class="report-card-features">
+                                            <li>Red flag indicators</li>
+                                            <li>Due diligence tips</li>
+                                            <li>Evaluation framework</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Vendor BS Detector', 'https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Vendor BS Detector', 'https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-for-executives.png" alt="AI For Executives 101"></div>
+                                    <img src="https://jjshay.com/ai-for-executives.png" alt="AI For Executives 101" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">18 Pages</span>
+                                        </div>
+                                        <h3>AI For Executives 101</h3>
+                                        <p>Essential AI knowledge for leaders.</p>
+                                        <ul class="report-card-features">
+                                            <li>AI fundamentals</li>
+                                            <li>Strategic applications</li>
+                                            <li>Leadership insights</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI-For-Executives%20101.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI For Executives 101', 'https://jjshay.com/AI-For-Executives%20101.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI For Executives 101', 'https://jjshay.com/AI-For-Executives%20101.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI-For-Executives%20101.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-card">
+                                    <span class="hot-badge">Hot</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-skillsets.png" alt="AI Skillsets"></div>
+                                    <img src="https://jjshay.com/ai-skillsets.png" alt="AI Skillsets" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">12 Pages</span>
+                                        </div>
+                                        <h3>AI Skillsets</h3>
+                                        <p>Essential skills for the AI era.</p>
+                                        <ul class="report-card-features">
+                                            <li>In-demand skills</li>
+                                            <li>Career pathways</li>
+                                            <li>Learning roadmap</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/ai-skillsets-deck.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Skillsets', 'https://jjshay.com/ai-skillsets-deck.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Skillsets', 'https://jjshay.com/ai-skillsets-deck.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/ai-skillsets-deck.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Emerging Companies to Watch 2026 -->
+                                <div class="report-card" data-category="strategy">
+                                    <span class="featured-badge">New</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-emerging-companies-2026.png" alt="Emerging Companies to Watch 2026"></div>
+                                    <img src="https://jjshay.com/ai-emerging-companies-2026.png" alt="Emerging Companies to Watch 2026" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">27 Pages</span>
+                                            <span class="reading-time">(~14 min)</span>
+                                        </div>
+                                        <h3>Emerging Companies 2026</h3>
+                                        <p>Under-the-radar disruptors across 10 categories ready to reshape industries.</p>
+                                        <ul class="report-card-features">
+                                            <li>30+ companies profiled</li>
+                                            <li>10 sectors covered</li>
+                                            <li>$200B+ AI startup funding</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/Emerging%20Companies%20to%20Watch%20%E2%80%94%202026.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('Emerging Companies 2026', 'https://jjshay.com/Emerging%20Companies%20to%20Watch%20%E2%80%94%202026.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('Emerging Companies 2026', 'https://jjshay.com/Emerging%20Companies%20to%20Watch%20%E2%80%94%202026.pdf', 'twitter')" aria-label="Share on Twitter">&#x1D54F;</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/Emerging%20Companies%20to%20Watch%20%E2%80%94%202026.pdf')" aria-label="Copy link">&#x1F517;</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- The AI Stack Wars 2026 -->
+                                <div class="report-card" data-category="strategy">
+                                    <span class="featured-badge">New</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-stack-wars-2026.png" alt="The AI Stack Wars 2026"></div>
+                                    <img src="https://jjshay.com/ai-stack-wars-2026.png" alt="The AI Stack Wars 2026" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">25 Pages</span>
+                                            <span class="reading-time">(~13 min)</span>
+                                        </div>
+                                        <h3>AI Stack Wars 2026</h3>
+                                        <p>ChatGPT vs Claude vs Grok vs Perplexity vs Gemini — what each is good at and where they fail.</p>
+                                        <ul class="report-card-features">
+                                            <li>5 platforms compared</li>
+                                            <li>Production evaluation framework</li>
+                                            <li>Best stack for each use case</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/AI_Stack_Wars_2026.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">0 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Stack Wars 2026', 'https://jjshay.com/AI_Stack_Wars_2026.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Stack Wars 2026', 'https://jjshay.com/AI_Stack_Wars_2026.pdf', 'twitter')" aria-label="Share on Twitter">&#x1D54F;</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Stack_Wars_2026.pdf')" aria-label="Copy link">&#x1F517;</button>
                                         </div>
                                     </div>
                                 </div>
@@ -4650,35 +5003,6 @@
                                             <button class="share-btn linkedin" onclick="shareReport('The AI Reckoning', 'https://jjshay.com/AI_Bubble_Burst_Report_Feb2026.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
                                             <button class="share-btn twitter" onclick="shareReport('The AI Reckoning', 'https://jjshay.com/AI_Bubble_Burst_Report_Feb2026.pdf', 'twitter')" aria-label="Share on Twitter">&#x1D54F;</button>
                                             <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Bubble_Burst_Report_Feb2026.pdf')" aria-label="Copy link">&#x1F517;</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- AI Reckoning Presentation Deck -->
-                                <div class="report-card">
-                                    <span class="featured-badge">New</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-reckoning-deck.png" alt="AI Reckoning Presentation Deck"></div>
-                                    <img src="https://jjshay.com/ai-reckoning-deck.png" alt="AI Reckoning Presentation Deck" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">20 Pages</span>
-                                            <span class="reading-time">(~10 min)</span>
-                                        </div>
-                                        <h3>AI Reckoning: Deck</h3>
-                                        <p>Executive presentation: sectors to double down, stocks to avoid.</p>
-                                        <ul class="report-card-features">
-                                            <li>Magnificent 7 analysis</li>
-                                            <li>Sector-by-sector breakdown</li>
-                                            <li>Smart money playbook</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/The%20AI%20Reckoning%20%E2%80%94%20Presentation%20Deck.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">2 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Reckoning Deck', 'https://jjshay.com/The%20AI%20Reckoning%20%E2%80%94%20Presentation%20Deck.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Reckoning Deck', 'https://jjshay.com/The%20AI%20Reckoning%20%E2%80%94%20Presentation%20Deck.pdf', 'twitter')" aria-label="Share on Twitter">&#x1D54F;</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/The%20AI%20Reckoning%20%E2%80%94%20Presentation%20Deck.pdf')" aria-label="Copy link">&#x1F517;</button>
                                         </div>
                                     </div>
                                 </div>
@@ -4828,31 +5152,59 @@
                                     </div>
                                 </div>
 
-                                <!-- AI ROI Ultimate Guide - FEATURED -->
+                                <!-- From Boardroom to Bot -->
                                 <div class="report-card">
-                                    <span class="featured-badge">Featured</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-roi-ultimate-guide.png" alt="AI ROI Ultimate Guide"></div>
-                                    <img src="https://jjshay.com/ai-roi-ultimate-guide.png" alt="AI ROI Ultimate Guide" class="report-card-image" loading="lazy">
+                                    <span class="featured-badge">New</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/boardroom-to-bot.png" alt="From Boardroom to Bot"></div>
+                                    <img src="https://jjshay.com/boardroom-to-bot.png" alt="From Boardroom to Bot" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
                                         <div class="report-card-header">
-                                            <span class="report-card-badge">30 Pages</span>
-                                            <span class="reading-time">(~15 min)</span>
+                                            <span class="report-card-badge">45 Pages</span>
+                                            <span class="reading-time">(~23 min)</span>
                                         </div>
-                                        <h3>AI ROI Ultimate Guide</h3>
-                                        <p>Measuring AI's real value for companies.</p>
+                                        <h3>From Boardroom to Bot</h3>
+                                        <p>Executive guide to AI transformation.</p>
                                         <ul class="report-card-features">
-                                            <li>ROI frameworks</li>
-                                            <li>Hidden cost analysis</li>
-                                            <li>Industry benchmarks</li>
+                                            <li>Leadership strategies</li>
+                                            <li>Digital transformation</li>
+                                            <li>AI adoption playbook</li>
                                         </ul>
                                         <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI_ROI_Ultimate_Guide.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                            <a href="https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf" class="report-card-download" target="_blank">Full Report</a>
                                         </div>
-                                        <br><div class="download-count">0 downloads</div>
+                                        <br><div class="download-count">4 downloads</div>
                                         <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI ROI Ultimate Guide', 'https://jjshay.com/AI_ROI_Ultimate_Guide.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI ROI Ultimate Guide', 'https://jjshay.com/AI_ROI_Ultimate_Guide.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_ROI_Ultimate_Guide.pdf')" aria-label="Copy link">🔗</button>
+                                            <button class="share-btn linkedin" onclick="shareReport('From Boardroom to Bot', 'https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('From Boardroom to Bot', 'https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf')" aria-label="Copy link">🔗</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- AI Board Briefing -->
+                                <div class="report-card">
+                                    <span class="featured-badge">New</span>
+                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-board-briefing.png" alt="AI Board Briefing"></div>
+                                    <img src="https://jjshay.com/ai-board-briefing.png" alt="AI Board Briefing" class="report-card-image" loading="lazy">
+                                    <div class="report-card-content">
+                                        <div class="report-card-header">
+                                            <span class="report-card-badge">18 Pages</span>
+                                        </div>
+                                        <h3>AI Board Briefing</h3>
+                                        <p>Executive deck for board presentations.</p>
+                                        <ul class="report-card-features">
+                                            <li>Strategic overview</li>
+                                            <li>ROI metrics</li>
+                                            <li>Implementation roadmap</li>
+                                        </ul>
+                                        <br><div class="report-card-buttons">
+                                            <a href="https://jjshay.com/ai-board-briefing-deck.pdf" class="report-card-download" target="_blank">Full Report</a>
+                                        </div>
+                                        <br><div class="download-count">5 downloads</div>
+                                        <div class="share-buttons">
+                                            <button class="share-btn linkedin" onclick="shareReport('AI Board Briefing', 'https://jjshay.com/ai-board-briefing-deck.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
+                                            <button class="share-btn twitter" onclick="shareReport('AI Board Briefing', 'https://jjshay.com/ai-board-briefing-deck.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
+                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/ai-board-briefing-deck.pdf')" aria-label="Copy link">🔗</button>
                                         </div>
                                     </div>
                                 </div>
@@ -4941,34 +5293,6 @@
                                     </div>
                                 </div>
 
-                                <!-- From Boardroom to Bot -->
-                                <div class="report-card">
-                                                                        <div class="report-card-popup"><img src="https://jjshay.com/boardroom-to-bot.png" alt="From Boardroom to Bot"></div>
-                                    <img src="https://jjshay.com/boardroom-to-bot.png" alt="From Boardroom to Bot" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">45 Pages</span>
-                                            <span class="reading-time">(~23 min)</span>
-                                        </div>
-                                        <h3>From Boardroom to Bot</h3>
-                                        <p>Executive guide to AI transformation.</p>
-                                        <ul class="report-card-features">
-                                            <li>Leadership strategies</li>
-                                            <li>Digital transformation</li>
-                                            <li>AI adoption playbook</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">4 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('From Boardroom to Bot', 'https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('From Boardroom to Bot', 'https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/From%20Boardroom%20to%20Bot%20_%20John%20J.%20Shay%20IV.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- M&A Intelligence Platform -->
                                 <div class="report-card">
                                                                         <div class="report-card-popup"><img src="https://jjshay.com/ma-intelligence-platform.png" alt="M&A Intelligence Platform"></div>
@@ -5026,117 +5350,6 @@
                                 </div>
 
                                 <div class="report-card">
-                                    <span class="featured-badge">Featured</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/Playbook.jpg" alt="The AI Acquisition Playbook"></div>
-                                    <img src="https://jjshay.com/Playbook.jpg" alt="The AI Acquisition Playbook" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">115 Pages</span>
-                                        </div>
-                                        <h3>The M&A Playbook</h3>
-                                        <p>The definitive guide to AI M&A</p>
-                                        <ul class="report-card-features">
-                                            <li>19 chapters, 29 templates</li>
-                                            <li>Due diligence & valuation</li>
-                                            <li>Integration playbooks</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/Playbook_short.pdf" class="report-card-download" target="_blank">Summary</a>
-                                            <a href="https://bit.ly/AI_Download" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">12 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('The M&A Playbook', 'https://bit.ly/AI_Download', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://bit.ly/AI_Download')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <span class="featured-badge">Featured</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP1.jpg" alt="BBP: Build"></div>
-                                    <img src="https://jjshay.com/BBP1.jpg" alt="BBP: Build" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">45 Pages</span>
-                                        </div>
-                                        <h3>BBP: Build</h3>
-                                        <p>Build AI capabilities in-house.</p>
-                                        <ul class="report-card-features">
-                                            <li>Build vs Buy framework</li>
-                                            <li>Team & talent acquisition</li>
-                                            <li>Infrastructure & tech stack</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/Build_short.pdf" class="report-card-download" target="_blank">Summary</a>
-                                            <a href="https://jjshay.com/BBP1.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">8 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Build', 'https://jjshay.com/BBP1.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('BBP: Build', 'https://jjshay.com/BBP1.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP1.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <span class="featured-badge">Featured</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP2.jpg" alt="BBP: Buy"></div>
-                                    <img src="https://jjshay.com/BBP2.jpg" alt="BBP: Buy" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">52 Pages</span>
-                                        </div>
-                                        <h3>BBP: Buy</h3>
-                                        <p>Acquire AI companies strategically.</p>
-                                        <ul class="report-card-features">
-                                            <li>M&A target identification</li>
-                                            <li>AI asset valuation</li>
-                                            <li>Post-merger integration</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/Buy_short.pdf" class="report-card-download" target="_blank">Summary</a>
-                                            <a href="https://jjshay.com/BBP2.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">15 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Buy', 'https://jjshay.com/BBP2.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('BBP: Buy', 'https://jjshay.com/BBP2.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP2.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/BBP3.jpg" alt="BBP: Partner"></div>
-                                    <img src="https://jjshay.com/BBP3.jpg" alt="BBP: Partner" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">38 Pages</span>
-                                        </div>
-                                        <h3>BBP: Partner</h3>
-                                        <p>Partner for AI capabilities.</p>
-                                        <ul class="report-card-features">
-                                            <li>Partnership structures</li>
-                                            <li>Vendor scorecards</li>
-                                            <li>Contract negotiation</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/Partner_short.pdf" class="report-card-download" target="_blank">Summary</a>
-                                            <a href="https://jjshay.com/BBP3.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">6 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('BBP: Partner', 'https://jjshay.com/BBP3.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('BBP: Partner', 'https://jjshay.com/BBP3.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/BBP3.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
                                                                         <div class="report-card-popup"><img src="https://jjshay.com/ai-sports.png" alt="AI in Sports"></div>
                                     <img src="https://jjshay.com/ai-sports.png" alt="AI in Sports" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -5163,7 +5376,6 @@
                                 </div>
 
                                 <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-food-agriculture.png" alt="AI in Food & Agriculture"></div>
                                     <img src="https://jjshay.com/ai-food-agriculture.png" alt="AI in Food & Agriculture" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -5211,33 +5423,6 @@
                                             <button class="share-btn linkedin" onclick="shareReport('AI in Brain-Computer Interfaces', 'https://jjshay.com/AI%20in%20Brain-Computer%20Interfaces%20_%20JJ%20Shay.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
                                             <button class="share-btn twitter" onclick="shareReport('AI in Brain-Computer Interfaces', 'https://jjshay.com/AI%20in%20Brain-Computer%20Interfaces%20_%20JJ%20Shay.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
                                             <button class="share-btn" onclick="copyLink('https://jjshay.com/AI%20in%20Brain-Computer%20Interfaces%20_%20JJ%20Shay.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-cybersecurity.png" alt="AI in Cybersecurity"></div>
-                                    <img src="https://jjshay.com/ai-cybersecurity.png" alt="AI in Cybersecurity" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">20 Pages</span>
-                                        </div>
-                                        <h3>AI in Cybersecurity</h3>
-                                        <p>AI-powered threat detection & defense.</p>
-                                        <ul class="report-card-features">
-                                            <li>Threat intelligence</li>
-                                            <li>Automated response</li>
-                                            <li>Vulnerability analysis</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">7 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI in Cybersecurity', 'https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI in Cybersecurity', 'https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI%20in%20Cybersecurity%20-%20JJ%20Shay%20Carousel.pdf')" aria-label="Copy link">🔗</button>
                                         </div>
                                     </div>
                                 </div>
@@ -5425,7 +5610,6 @@
                                 </div>
 
                                 <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-space.png" alt="AI in Space Exploration"></div>
                                     <img src="https://jjshay.com/ai-space.png" alt="AI in Space Exploration" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -5790,7 +5974,6 @@
                                 </div>
 
                                 <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-robotics.png" alt="AI Robotics Deep Dive"></div>
                                     <img src="https://jjshay.com/ai-robotics.png" alt="AI Robotics Deep Dive" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -5838,32 +6021,6 @@
                                             <button class="share-btn linkedin" onclick="shareReport('AI Unexpected Impacts', 'https://jjshay.com/AI_Unexpected_Impacts_Report.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
                                             <button class="share-btn twitter" onclick="shareReport('AI Unexpected Impacts', 'https://jjshay.com/AI_Unexpected_Impacts_Report.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
                                             <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Unexpected_Impacts_Report.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-vendor-bs-detector.png" alt="AI Vendor BS Detector"></div>
-                                    <img src="https://jjshay.com/ai-vendor-bs-detector.png" alt="AI Vendor BS Detector" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">12 Pages</span>
-                                        </div>
-                                        <h3>AI Vendor BS Detector</h3>
-                                        <p>Cutting through AI hype.</p>
-                                        <ul class="report-card-features">
-                                            <li>Red flag indicators</li>
-                                            <li>Due diligence tips</li>
-                                            <li>Evaluation framework</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">0 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Vendor BS Detector', 'https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Vendor BS Detector', 'https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Vendor_BS_Detector_Guide.pdf')" aria-label="Copy link">🔗</button>
                                         </div>
                                     </div>
                                 </div>
@@ -5947,32 +6104,6 @@
                                 </div>
 
                                 <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-for-executives.png" alt="AI For Executives 101"></div>
-                                    <img src="https://jjshay.com/ai-for-executives.png" alt="AI For Executives 101" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">18 Pages</span>
-                                        </div>
-                                        <h3>AI For Executives 101</h3>
-                                        <p>Essential AI knowledge for leaders.</p>
-                                        <ul class="report-card-features">
-                                            <li>AI fundamentals</li>
-                                            <li>Strategic applications</li>
-                                            <li>Leadership insights</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI-For-Executives%20101.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">0 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI For Executives 101', 'https://jjshay.com/AI-For-Executives%20101.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI For Executives 101', 'https://jjshay.com/AI-For-Executives%20101.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI-For-Executives%20101.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-graveyard.png" alt="AI Graveyard"></div>
                                     <img src="https://jjshay.com/ai-graveyard.png" alt="AI Graveyard" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -6046,32 +6177,6 @@
                                             <button class="share-btn linkedin" onclick="shareReport('AI Predictive Analytics', 'https://jjshay.com/AI-Predictive-Analytics-CFO%20(1).pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
                                             <button class="share-btn twitter" onclick="shareReport('AI Predictive Analytics', 'https://jjshay.com/AI-Predictive-Analytics-CFO%20(1).pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
                                             <button class="share-btn" onclick="copyLink('https://jjshay.com/AI-Predictive-Analytics-CFO%20(1).pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-skillsets.png" alt="AI Skillsets"></div>
-                                    <img src="https://jjshay.com/ai-skillsets.png" alt="AI Skillsets" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">12 Pages</span>
-                                        </div>
-                                        <h3>AI Skillsets</h3>
-                                        <p>Essential skills for the AI era.</p>
-                                        <ul class="report-card-features">
-                                            <li>In-demand skills</li>
-                                            <li>Career pathways</li>
-                                            <li>Learning roadmap</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/ai-skillsets-deck.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">0 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Skillsets', 'https://jjshay.com/ai-skillsets-deck.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Skillsets', 'https://jjshay.com/ai-skillsets-deck.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/ai-skillsets-deck.pdf')" aria-label="Copy link">🔗</button>
                                         </div>
                                     </div>
                                 </div>
@@ -6184,7 +6289,6 @@
 
                                 <!-- AI in Cryptocurrency -->
                                 <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-cryptocurrency.png" alt="AI in Cryptocurrency"></div>
                                     <img src="https://jjshay.com/ai-cryptocurrency.png" alt="AI in Cryptocurrency" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -6266,7 +6370,6 @@
 
                                 <!-- Quantum Computing + AI -->
                                 <div class="report-card">
-                                    <span class="hot-badge">Hot</span>
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-quantum.png" alt="Quantum Computing AI"></div>
                                     <img src="https://jjshay.com/ai-quantum.png" alt="Quantum Computing AI" class="report-card-image" loading="lazy">
                                     <div class="report-card-content">
@@ -6454,60 +6557,6 @@
                                     </div>
                                 </div>
 
-                                <!-- AI Board Briefing -->
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-board-briefing.png" alt="AI Board Briefing"></div>
-                                    <img src="https://jjshay.com/ai-board-briefing.png" alt="AI Board Briefing" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">18 Pages</span>
-                                        </div>
-                                        <h3>AI Board Briefing</h3>
-                                        <p>Executive deck for board presentations.</p>
-                                        <ul class="report-card-features">
-                                            <li>Strategic overview</li>
-                                            <li>ROI metrics</li>
-                                            <li>Implementation roadmap</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/ai-board-briefing-deck.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">5 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Board Briefing', 'https://jjshay.com/ai-board-briefing-deck.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Board Briefing', 'https://jjshay.com/ai-board-briefing-deck.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/ai-board-briefing-deck.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- AI Companies Intelligence -->
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-companies-intelligence.png" alt="AI Companies Intelligence"></div>
-                                    <img src="https://jjshay.com/ai-companies-intelligence.png" alt="AI Companies Intelligence" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">28 Pages</span>
-                                        </div>
-                                        <h3>AI Companies Intelligence</h3>
-                                        <p>Deep dive on top AI companies.</p>
-                                        <ul class="report-card-features">
-                                            <li>Company analysis</li>
-                                            <li>Market positioning</li>
-                                            <li>Competitive landscape</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">1 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Companies Intelligence', 'https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Companies Intelligence', 'https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI-Companies-Intelligence-Report%20(1).pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- AI Privacy Impact -->
                                 <div class="report-card">
                                     <div class="report-card-popup"><img src="https://jjshay.com/ai-privacy-impact.png" alt="AI Privacy Impact"></div>
@@ -6535,32 +6584,6 @@
                                     </div>
                                 </div>
 
-                                <!-- AI Acquisition Targets -->
-                                <div class="report-card">
-                                    <div class="report-card-popup"><img src="https://jjshay.com/ai-acquisition-targets.png" alt="AI Acquisition Targets"></div>
-                                    <img src="https://jjshay.com/ai-acquisition-targets.png" alt="AI Acquisition Targets" class="report-card-image" loading="lazy">
-                                    <div class="report-card-content">
-                                        <div class="report-card-header">
-                                            <span class="report-card-badge">16 Pages</span>
-                                        </div>
-                                        <h3>AI Acquisition Targets</h3>
-                                        <p>Top AI companies for M&A.</p>
-                                        <ul class="report-card-features">
-                                            <li>Target analysis</li>
-                                            <li>Valuation metrics</li>
-                                            <li>Strategic fit</li>
-                                        </ul>
-                                        <br><div class="report-card-buttons">
-                                            <a href="https://jjshay.com/AI_Acquisition_Targets_Report.pdf" class="report-card-download" target="_blank">Full Report</a>
-                                        </div>
-                                        <br><div class="download-count">3 downloads</div>
-                                        <div class="share-buttons">
-                                            <button class="share-btn linkedin" onclick="shareReport('AI Acquisition Targets', 'https://jjshay.com/AI_Acquisition_Targets_Report.pdf', 'linkedin')" aria-label="Share on LinkedIn">in</button>
-                                            <button class="share-btn twitter" onclick="shareReport('AI Acquisition Targets', 'https://jjshay.com/AI_Acquisition_Targets_Report.pdf', 'twitter')" aria-label="Share on Twitter">𝕏</button>
-                                            <button class="share-btn" onclick="copyLink('https://jjshay.com/AI_Acquisition_Targets_Report.pdf')" aria-label="Copy link">🔗</button>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 </div>
                             </div>
@@ -6605,7 +6628,7 @@
                                 <span class="project-tag">Research</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/01_The_AI_Book.pptx.pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/AI-book" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6631,7 +6654,7 @@
                                 <span class="project-tag">Multi-AI</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/02_Intelligence_Engine.pptx.pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('kRJMBH_EyFM'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6640,6 +6663,7 @@
 
                         <!-- Product Video Creator -->
                         <div class="github-project-card">
+                            <span class="featured-badge-cyan">Featured</span>
                             <span class="project-rank">3</span>
                             <div class="project-image-wrapper">
                                 <img src="https://jjshay.com/proj-video-creator.png" alt="Product Video Creator" class="project-image" loading="lazy">
@@ -6656,7 +6680,7 @@
                                 <span class="project-tag">FFmpeg</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/04_Product_Video_Creator.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('5C92wee0nyM'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/product-video-creator" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6681,7 +6705,7 @@
                                 <span class="project-tag">OpenCV</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/05_Art_Crop_System.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('Ud5_AeNmEE8'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/art-crop-system" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6706,7 +6730,7 @@
                                 <span class="project-tag">eBay API</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/06_eBay_Listing_Automation.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/ebay-listing-automation" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6731,7 +6755,7 @@
                                 <span class="project-tag">Pillow</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/08_Mockup_Generator.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/mockup-generator" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6741,7 +6765,6 @@
                         <!-- Gauntlet COA -->
                         <div class="github-project-card">
                             <span class="project-rank">7</span>
-                            <span class="featured-badge-cyan">Featured</span>
                             <div class="project-image-wrapper">
                                 <img src="https://jjshay.com/proj-gauntlet-coa.png" alt="Gauntlet COA" class="project-image" loading="lazy">
                             </div>
@@ -6756,7 +6779,7 @@
                                 <span class="project-tag">Solidity</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/03_Gauntlet_COA.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="https://gauntlet-coa-frontend.vercel.app/" target="_blank" class="project-link" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6781,7 +6804,7 @@
                                 <span class="project-tag">OpenCV</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://jjshay.com/07_Handwriting_Analysis.pptx%20(1).pdf" target="_blank" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
                                 <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
                                 <a href="https://github.com/jjshay/handwriting-analysis" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
@@ -6819,7 +6842,7 @@
                                                 <a href="https://www.linkedin.com/in/jjshay/" target="_blank" class="linkedin-popup-li-logo"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
                                             </div>
                                             <div class="jj-popup-stats">
-                                                <span>9,000+ Followers</span>
+                                                <span>10K+ Followers</span>
                                             </div>
                                         </div>
                                         </div>
@@ -6831,7 +6854,7 @@
                             </div>
                             <div class="profile-bio">
                                 <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.5; text-align: left;">
-                                    <strong style="color: #D4AF37;">AI strategist with 20+ years driving M&A, partnerships, and GTM</strong> across tech, healthcare, and life sciences. At <a href="https://about.google/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Google</strong></a>, <a href="https://www.fitbit.com/global/us/about-us" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Fitbit</strong></a>, <a href="https://www.intuit.com/company/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Intuit</strong></a>, and <a href="https://www.philips.com/a-w/about.html" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Philips</strong></a>, I closed <strong style="color: #D4AF37;">$4B+ in deals</strong>—including leading the <a href="https://democraticmedia.org/assets/resources/googlefitbitdeal020820.pdf" target="_blank" style="text-decoration: none;"><strong style="color: #D4AF37;">$2.1B Google-Fitbit integration</strong></a> solo against Google's 50-person team—and partnered with 50+ AI startups to bring emerging tech to market.
+                                    <strong style="color: #D4AF37;">AI strategist with 15+ years driving M&A, partnerships, and GTM</strong> across <strong style="color: #D4AF37;">5 Fortune 500 companies</strong> in tech, healthcare, and life sciences. At <a href="https://about.google/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Google</strong></a>, <a href="https://www.fitbit.com/global/us/about-us" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Fitbit</strong></a>, <a href="https://www.intuit.com/company/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Intuit</strong></a>, and <a href="https://www.philips.com/a-w/about.html" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Philips</strong></a>, I closed <strong style="color: #D4AF37;">$4B+ in deals</strong>—including leading the <a href="https://democraticmedia.org/assets/resources/googlefitbitdeal020820.pdf" target="_blank" style="text-decoration: none;"><strong style="color: #D4AF37;">$2.1B Google-Fitbit integration</strong></a> solo against Google's 50-person team—and analyzed <strong style="color: #D4AF37;">300+ AI companies</strong> to bring emerging tech to market.
                                 </p>
                                 <!-- Company Logos -->
                                 <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
@@ -6847,7 +6870,7 @@
                         <!-- Second paragraph - full width below -->
                         <div style="padding: 0 15px;">
                             <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.5; text-align: left;">
-                                A <a href="https://www.babson.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Babson College</strong></a> graduate with executive training from <a href="https://www.harvard.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Harvard</strong></a>, <a href="https://www.mit.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">MIT</strong></a>, and <a href="https://www.stanford.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Stanford</strong></a>, my <strong style="color: #D4AF37;">obsession with AI started early</strong>—watching Data on Star Trek and seeing a roadmap, not science fiction. <strong style="color: #D4AF37;">When the AI wave accelerated</strong>, I went all in—<strong style="color: #D4AF37;">building 10+ production AI systems hands-on</strong>. Today, I share insights with 9,200+ executives and AI leaders, breaking down hype from what's actionable to <strong style="color: #D4AF37;">bridge technical depth with business clarity</strong>.
+                                A <a href="https://www.babson.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Babson College</strong></a> graduate with executive training from <a href="https://www.harvard.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Harvard</strong></a>, <a href="https://www.mit.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">MIT</strong></a>, and <a href="https://www.stanford.edu/about/" target="_blank" style="text-decoration: none;"><strong style="color: #fff;">Stanford</strong></a>, my <strong style="color: #D4AF37;">obsession with AI started early</strong>—watching Data on Star Trek and seeing a roadmap, not science fiction. <strong style="color: #D4AF37;">When the AI wave accelerated</strong>, I went all in—<strong style="color: #D4AF37;">building 5+ production AI systems hands-on</strong> and publishing <strong style="color: #D4AF37;">70+ AI reports</strong>. Today, I share insights with <strong style="color: #D4AF37;">10K+ followers</strong>, breaking down hype from what's actionable to <strong style="color: #D4AF37;">bridge technical depth with business clarity</strong>. I'm excited about what the future holds.
                             </p>
                             <!-- School Logos -->
                             <div style="margin: 10px 0; display: flex; justify-content: flex-start;">
@@ -8179,7 +8202,7 @@
         // ===== REPORT ENHANCEMENTS: Categories, Dates, Stats, Filters =====
         (function() {
             const categoryMap = {
-                'strategy': ['Boardroom', 'Sabbatical', 'Implementation', 'Industry Winners', 'Vendor BS', 'Executives 101', 'Graveyard', 'Skillsets', 'Terminology', 'Unexpected', 'Board Briefing', 'Companies Intelligence', 'Privacy Impact', 'Rights', 'Copilot Side', 'Eating SaaS', 'Reckoning'],
+                'strategy': ['Boardroom', 'Sabbatical', 'Implementation', 'Industry Winners', 'Vendor BS', 'Executives 101', 'Graveyard', 'Skillsets', 'Terminology', 'Unexpected', 'Board Briefing', 'Companies Intelligence', 'Privacy Impact', 'Rights', 'Copilot Side', 'Eating SaaS', 'Reckoning', 'Emerging Companies', 'Stack Wars'],
                 'finance': ['ROI', 'M&A', 'Playbook', 'BBP', 'Financial Metrics', 'Valuations', 'Predictive Analytics', 'Acquisition Targets', 'Private Companies', 'Funding Loop', 'VC', 'CapEx', 'Bubble'],
                 'healthcare': ['Healthcare', 'Medical', 'Mental Health', 'Longevity'],
                 'crypto': ['Bitcoin', 'Blockchain', 'Cryptocurrency'],
@@ -8189,6 +8212,7 @@
             };
 
             const dateMap = {
+                'Emerging Companies': 'Feb 2026', 'Stack Wars': 'Feb 2026',
                 'M&A Landscape': 'Feb 2026', 'Reckoning': 'Feb 2026', 'Bubble': 'Feb 2026',
                 'Zapier': 'Feb 2026', 'MCP Servers': 'Feb 2026',
                 'Bitcoin': 'Feb 2026', 'CapEx': 'Feb 2026', 'Eating SaaS': 'Feb 2026',
@@ -8342,33 +8366,64 @@
                 }
             });
 
-            // Hero metrics rotator
+            // Hero typewriter rotator
             (function() {
-                var heroItems = [
-                    { value: '15+', label: 'Years Experience' },
-                    { value: '$4B+', label: 'Deals Closed' },
-                    { value: '300+', label: 'AI Companies Analyzed' },
-                    { value: '10K+', label: 'LinkedIn Followers' },
-                    { value: '70+', label: 'AI Reports Published' },
-                    { value: '5+', label: 'Production Systems' },
-                    { value: '5', label: 'Fortune 500 Companies' }
+                var heroStrings = [
+                    '15+ Years Experience',
+                    '$4B+ Deals Closed',
+                    '300+ AI Companies Analyzed',
+                    '10K+ LinkedIn Followers',
+                    '70+ AI Reports Published',
+                    '5+ Production Systems',
+                    '5 Fortune 500 Companies'
                 ];
                 var heroIdx = 0;
-                var heroVal = document.getElementById('hero-rotating-value');
-                var heroLbl = document.getElementById('hero-rotating-label');
-                var heroRot = document.getElementById('hero-rotator');
+                var el = document.getElementById('hero-rotator');
+                var typeSpeed = 45;
+                var eraseSpeed = 25;
+                var holdTime = 2500;
 
-                function showHeroStat() {
-                    heroRot.style.opacity = '0';
-                    setTimeout(function() {
-                        heroVal.textContent = heroItems[heroIdx].value;
-                        heroLbl.textContent = heroItems[heroIdx].label;
-                        heroRot.style.opacity = '1';
-                        heroIdx = (heroIdx + 1) % heroItems.length;
-                    }, 400);
+                function typeText(str, cb) {
+                    var i = 0;
+                    el.classList.remove('no-cursor');
+                    function next() {
+                        if (i <= str.length) {
+                            el.textContent = str.slice(0, i);
+                            i++;
+                            setTimeout(next, typeSpeed);
+                        } else {
+                            cb();
+                        }
+                    }
+                    next();
                 }
-                showHeroStat();
-                setInterval(showHeroStat, 3000);
+
+                function eraseText(cb) {
+                    var text = el.textContent;
+                    var i = text.length;
+                    function next() {
+                        if (i >= 0) {
+                            el.textContent = text.slice(0, i);
+                            i--;
+                            setTimeout(next, eraseSpeed);
+                        } else {
+                            cb();
+                        }
+                    }
+                    next();
+                }
+
+                function cycle() {
+                    typeText(heroStrings[heroIdx], function() {
+                        setTimeout(function() {
+                            eraseText(function() {
+                                heroIdx = (heroIdx + 1) % heroStrings.length;
+                                setTimeout(cycle, 300);
+                            });
+                        }, holdTime);
+                    });
+                }
+                cycle();
             })();
 
             // Category filter dropdown handler
