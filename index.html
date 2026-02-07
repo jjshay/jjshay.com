@@ -315,15 +315,16 @@
 
         .tab-content {
             display: none;
+            opacity: 0;
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: tabFadeSlideIn 0.4s ease forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes tabFadeSlideIn {
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -2920,10 +2921,28 @@
             gap: 10px;
         }
 
+        .project-rank {
+            position: absolute;
+            top: 28px;
+            left: 20px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 50%, #D4AF37 100%);
+            color: #000;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
         .project-link {
             flex: 1;
             text-align: center;
-            padding: 12px 16px;
+            padding: 10px;
             background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 50%, #D4AF37 100%);
             border: none;
             border-radius: 6px;
@@ -2935,8 +2954,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
             min-height: 44px;
+        }
+
+        .project-link svg {
+            width: 20px;
+            height: 20px;
         }
 
         .project-link:hover {
@@ -2946,16 +2969,18 @@
             box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
         }
 
+        .project-link:hover svg {
+            fill: #fff;
+        }
+
         .project-demo {
             flex: 1;
             text-align: center;
-            padding: 12px 16px;
+            padding: 10px;
             background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 50%, #D4AF37 100%);
             border: none;
             border-radius: 6px;
             color: #000;
-            font-size: 12px;
-            font-weight: 600;
             text-decoration: none;
             transition: all 0.2s ease;
             cursor: pointer;
@@ -2967,10 +2992,19 @@
             justify-content: center;
         }
 
+        .project-demo svg {
+            width: 20px;
+            height: 20px;
+        }
+
         .project-demo:hover {
             background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
             color: #fff;
             box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+        }
+
+        .project-demo:hover svg {
+            fill: #fff;
         }
 
         .project-demo:active {
@@ -3842,7 +3876,13 @@
             .project-link {
                 min-width: 44px;
                 min-height: 44px;
-                padding: 10px 14px;
+                padding: 10px;
+            }
+
+            .project-rank {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
             }
 
             /* Back to top button */
@@ -4192,6 +4232,45 @@
         }
 
         /* Sticky Tab Bar */
+        .hero-metrics {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            margin: 8px 0 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 10px;
+        }
+
+        .hero-metric {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hero-rotator {
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-metric-value {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4CF47 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .hero-metric-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .tab-bar {
             position: sticky;
             top: 3px;
@@ -4430,6 +4509,14 @@
                 </div>
                 <div class="tagline-stack" id="tagline">
                     <span class="tagline-top">AI Strategist</span>
+                </div>
+            </div>
+
+            <!-- Hero Metrics Bar -->
+            <div class="hero-metrics">
+                <div class="hero-metric hero-rotator" id="hero-rotator">
+                    <span class="hero-metric-value" id="hero-rotating-value">15+</span>
+                    <span class="hero-metric-label" id="hero-rotating-label">Years Experience</span>
                 </div>
             </div>
 
@@ -6502,9 +6589,10 @@
                         <div class="github-projects-grid" id="github-projects-grid">
                         <!-- The AI Book -->
                         <div class="github-project-card">
+                            <span class="project-rank">1</span>
                             <span class="featured-badge-cyan">Featured</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/ai-book-logo.png" alt="The AI Book" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-ai-book.png" alt="The AI Book" class="project-image" loading="lazy">
                             </div>
                             <div class="project-header">
                                 <h4 class="project-title">The AI Book</h4>
@@ -6517,17 +6605,19 @@
                                 <span class="project-tag">Research</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link">View Live</a>
-                                <a href="https://github.com/jjshay/AI-book" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="http://www.jjshay.com/aibook.html" target="_blank" class="project-link" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/AI-book" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 150</div>
                         </div>
 
                         <!-- Intelligence Engine -->
                         <div class="github-project-card">
+                            <span class="project-rank">2</span>
                             <span class="featured-badge-cyan">Featured</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/news-intelligence.png" alt="Intelligence Engine" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-intelligence-engine.png" alt="Intelligence Engine" class="project-image" loading="lazy">
                                 <img src="https://jjshay.com/01-news-intelligence.gif" alt="Intelligence Engine Demo" class="project-gif">
                             </div>
                             <div class="project-header">
@@ -6541,39 +6631,18 @@
                                 <span class="project-tag">Multi-AI</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('kRJMBH_EyFM'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('kRJMBH_EyFM'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 100</div>
                         </div>
 
-                        <!-- Gauntlet COA -->
-                        <div class="github-project-card">
-                            <span class="featured-badge-cyan">Featured</span>
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/COA.jpg" alt="Gauntlet COA" class="project-image" loading="lazy">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">Gauntlet COA</h4>
-                            </div>
-                            <p class="project-desc">Blockchain COA system combating AI fraud. Authenticates art using Polygon NFT technology. 200+ artworks cataloged.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2026</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Polygon</span>
-                                <span class="project-tag">Solidity</span>
-                            </div>
-                            <br><br><div class="project-links">
-                                <a href="https://gauntlet-coa-frontend.vercel.app/" target="_blank" class="project-link">View Live</a>
-                                <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                            </div>
-                            <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 95</div>
-                        </div>
-
                         <!-- Product Video Creator -->
                         <div class="github-project-card">
+                            <span class="project-rank">3</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/product-video-creator.png" alt="Product Video Creator" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-video-creator.png" alt="Product Video Creator" class="project-image" loading="lazy">
                                 <img src="https://jjshay.com/06-google-apps.gif" alt="Product Video Demo" class="project-gif">
                             </div>
                             <div class="project-header">
@@ -6587,16 +6656,18 @@
                                 <span class="project-tag">FFmpeg</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('5C92wee0nyM'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay/product-video-creator" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('5C92wee0nyM'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/product-video-creator" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 65</div>
                         </div>
 
                         <!-- Art Crop System -->
                         <div class="github-project-card">
+                            <span class="project-rank">4</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/art-crop-system.png" alt="Art Crop System" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-art-crop.png" alt="Art Crop System" class="project-image" loading="lazy">
                                 <img src="https://jjshay.com/03-art-crop.gif" alt="Art Crop Demo" class="project-gif">
                             </div>
                             <div class="project-header">
@@ -6610,16 +6681,18 @@
                                 <span class="project-tag">OpenCV</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('Ud5_AeNmEE8'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay/art-crop-system" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('Ud5_AeNmEE8'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/art-crop-system" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 55</div>
                         </div>
 
                         <!-- eBay Listing Automation -->
                         <div class="github-project-card">
+                            <span class="project-rank">5</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/ebay-listing-automation.png" alt="eBay Listing Automation" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-ebay-listing.png" alt="eBay Listing Automation" class="project-image" loading="lazy">
                                 <img src="https://jjshay.com/02-ebay-listing.gif" alt="eBay Listing Demo" class="project-gif">
                             </div>
                             <div class="project-header">
@@ -6633,39 +6706,18 @@
                                 <span class="project-tag">eBay API</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay/ebay-listing-automation" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('QscERF553yY'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/ebay-listing-automation" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 140</div>
                         </div>
 
-                        <!-- Handwriting Analysis -->
-                        <div class="github-project-card">
-                            <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/handwriting-analysis.png" alt="Handwriting Analysis" class="project-image" loading="lazy">
-                                <img src="https://jjshay.com/05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
-                            </div>
-                            <div class="project-header">
-                                <h4 class="project-title">Handwriting Analysis</h4>
-                            </div>
-                            <p class="project-desc">Forensic signature authentication. 200+ signatures analyzed against 14 measurable characteristics.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">2026</span>
-                                <span class="project-tag">Solo</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">OpenCV</span>
-                            </div>
-                            <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay/handwriting-analysis" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                            </div>
-                            <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 70</div>
-                        </div>
-
                         <!-- Mockup Generator -->
                         <div class="github-project-card">
+                            <span class="project-rank">6</span>
                             <div class="project-image-wrapper">
-                                <img src="https://jjshay.com/mockup-generator.png" alt="Mockup Generator" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/proj-mockup-generator.png" alt="Mockup Generator" class="project-image" loading="lazy">
                                 <img src="https://jjshay.com/04-mockup-generator.gif" alt="Mockup Generator Demo" class="project-gif">
                             </div>
                             <div class="project-header">
@@ -6679,10 +6731,61 @@
                                 <span class="project-tag">Pillow</span>
                             </div>
                             <br><br><div class="project-links">
-                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-link project-demo">Watch Demo</a>
-                                <a href="https://github.com/jjshay/mockup-generator" target="_blank" class="project-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('_nI2-Yqc0Fk'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/mockup-generator" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                             </div>
                             <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 80</div>
+                        </div>
+
+                        <!-- Gauntlet COA -->
+                        <div class="github-project-card">
+                            <span class="project-rank">7</span>
+                            <span class="featured-badge-cyan">Featured</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/proj-gauntlet-coa.png" alt="Gauntlet COA" class="project-image" loading="lazy">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Gauntlet COA</h4>
+                            </div>
+                            <p class="project-desc">Blockchain COA system combating AI fraud. Authenticates art using Polygon NFT technology. 200+ artworks cataloged.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2026</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Polygon</span>
+                                <span class="project-tag">Solidity</span>
+                            </div>
+                            <br><br><div class="project-links">
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="https://gauntlet-coa-frontend.vercel.app/" target="_blank" class="project-link" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/gauntlet-coa" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                            <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 95</div>
+                        </div>
+
+                        <!-- Handwriting Analysis -->
+                        <div class="github-project-card">
+                            <span class="project-rank">8</span>
+                            <div class="project-image-wrapper">
+                                <img src="https://jjshay.com/proj-handwriting.png" alt="Handwriting Analysis" class="project-image" loading="lazy">
+                                <img src="https://jjshay.com/05-handwriting.gif" alt="Handwriting Demo" class="project-gif">
+                            </div>
+                            <div class="project-header">
+                                <h4 class="project-title">Handwriting Analysis</h4>
+                            </div>
+                            <p class="project-desc">Forensic signature authentication. 200+ signatures analyzed against 14 measurable characteristics.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">2025</span>
+                                <span class="project-tag">Solo</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OpenCV</span>
+                            </div>
+                            <br><br><div class="project-links">
+                                <a href="#" class="project-link" title="Overview presentation"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></a>
+                                <a href="#" onclick="openVideoModal('NUZR00y-vLo'); return false;" class="project-demo" title="Live/Demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+                                <a href="https://github.com/jjshay/handwriting-analysis" target="_blank" class="project-link" title="Github Repo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                            <br><div class="project-views" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6); font-size: 12px;">Total Views: 70</div>
                         </div>
 
                         </div>
@@ -7211,19 +7314,41 @@
 
         // Tab switching function
         function switchTab(tabId) {
-            // Remove active class from all tabs and content
+            var currentActive = document.querySelector('.tab-content.active');
+            if (currentActive && currentActive.id === tabId) return;
+
+            // Remove active class from all tabs
             document.querySelectorAll('.gold-tab').forEach(tab => {
                 tab.classList.remove('active');
                 tab.setAttribute('aria-selected', 'false');
                 tab.setAttribute('tabindex', '-1');
             });
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-            // Add active class to clicked tab and corresponding content
+            // Fade out current content then switch
+            if (currentActive) {
+                currentActive.style.opacity = '0';
+                currentActive.style.transition = 'opacity 0.15s ease';
+                setTimeout(function() {
+                    currentActive.classList.remove('active');
+                    currentActive.style.transition = '';
+                    currentActive.style.opacity = '';
+                    document.getElementById(tabId).classList.add('active');
+                }, 150);
+            } else {
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            }
+
+            // Add active class to clicked tab
             event.currentTarget.classList.add('active');
             event.currentTarget.setAttribute('aria-selected', 'true');
             event.currentTarget.setAttribute('tabindex', '0');
-            document.getElementById(tabId).classList.add('active');
+
+            // Smooth scroll to tab content area
+            var tabBar = document.querySelector('.tab-bar');
+            if (tabBar) {
+                tabBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         // Handle hash-based navigation on page load
@@ -8216,6 +8341,35 @@
                     });
                 }
             });
+
+            // Hero metrics rotator
+            (function() {
+                var heroItems = [
+                    { value: '15+', label: 'Years Experience' },
+                    { value: '$4B+', label: 'Deals Closed' },
+                    { value: '300+', label: 'AI Companies Analyzed' },
+                    { value: '10K+', label: 'LinkedIn Followers' },
+                    { value: '70+', label: 'AI Reports Published' },
+                    { value: '5+', label: 'Production Systems' },
+                    { value: '5', label: 'Fortune 500 Companies' }
+                ];
+                var heroIdx = 0;
+                var heroVal = document.getElementById('hero-rotating-value');
+                var heroLbl = document.getElementById('hero-rotating-label');
+                var heroRot = document.getElementById('hero-rotator');
+
+                function showHeroStat() {
+                    heroRot.style.opacity = '0';
+                    setTimeout(function() {
+                        heroVal.textContent = heroItems[heroIdx].value;
+                        heroLbl.textContent = heroItems[heroIdx].label;
+                        heroRot.style.opacity = '1';
+                        heroIdx = (heroIdx + 1) % heroItems.length;
+                    }, 400);
+                }
+                showHeroStat();
+                setInterval(showHeroStat, 3000);
+            })();
 
             // Category filter dropdown handler
             window.filterByCategory = function(filter) {
