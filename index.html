@@ -2769,6 +2769,27 @@
             color: #fff;
         }
 
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sort-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .sort-select {
+            padding: 8px 12px;
+            background: #fff;
+            border: 1px solid rgba(212,175,55,0.5);
+            border-radius: 6px;
+            color: #000;
+            font-size: 13px;
+        }
+
         @media (max-width: 600px) {
             .reports-stats-banner {
                 gap: 20px;
@@ -2777,16 +2798,15 @@
                 font-size: 22px;
             }
             .sort-controls {
-                flex-wrap: nowrap;
-                gap: 4px !important;
+                gap: 3px;
             }
-            .sort-controls select {
-                padding: 6px 4px !important;
-                font-size: 11px !important;
-                min-width: 0;
+            .sort-select {
+                padding: 5px 2px;
+                font-size: 11px;
+                max-width: 80px;
             }
-            .sort-controls span {
-                font-size: 11px !important;
+            .sort-label {
+                font-size: 10px;
             }
         }
 
@@ -4538,14 +4558,14 @@
                 <div class="glass-card reports-section">
                     <!-- Search Reports -->
                     <div class="search-container">
-                        <div class="search-sort-row" style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center;">
+                        <div class="search-sort-row" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center;">
                             <div class="search-wrapper">
                                 <span class="search-icon">🔍</span>
                                 <input type="text" class="search-input" id="reports-search" placeholder="Search..." oninput="filterCards('reports')" style="max-width: 400px;">
                             </div>
-                            <div class="sort-controls" style="display: flex; align-items: center; gap: 8px;">
-                                <span style="color: rgba(255,255,255,0.5); font-size: 13px;">Filter:</span>
-                                <select id="report-filter-select" onchange="filterByCategory(this.value)" style="padding: 8px 12px; background: #fff; border: 1px solid rgba(212,175,55,0.5); border-radius: 6px; color: #000; font-size: 13px;">
+                            <div class="sort-controls">
+                                <span class="sort-label">Filter:</span>
+                                <select id="report-filter-select" class="sort-select" onchange="filterByCategory(this.value)">
                                     <option value="all">All</option>
                                     <option value="strategy">Strategy</option>
                                     <option value="finance">Finance</option>
@@ -4555,8 +4575,8 @@
                                     <option value="deeptech">Tech</option>
                                     <option value="mcp">MCP</option>
                                 </select>
-                                <span style="color: rgba(255,255,255,0.5); font-size: 13px;">Sort:</span>
-                                <select onchange="sortReports(this.value)" style="padding: 8px 12px; background: #fff; border: 1px solid rgba(212,175,55,0.5); border-radius: 6px; color: #000; font-size: 13px;">
+                                <span class="sort-label">Sort:</span>
+                                <select class="sort-select" onchange="sortReports(this.value)">
                                     <option value="default">Default</option>
                                     <option value="featured">Featured</option>
                                     <option value="hot">Hot</option>
