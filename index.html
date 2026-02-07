@@ -8179,7 +8179,7 @@
                     { number: totalDownloads + '+', label: 'Total Downloads' },
                     { number: totalViews.toLocaleString() + '+', label: 'Total Views' },
                     { number: '20+', label: 'Industries' },
-                    { number: totalPages.toLocaleString() + '+', label: 'Total Pages' },
+                    { number: Math.max(totalPages, 2000).toLocaleString() + '+', label: 'Total Pages' },
                     { number: timeStr, label: 'Total Read Time' }
                 ];
 
