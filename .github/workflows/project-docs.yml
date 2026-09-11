@@ -1,19 +1,7 @@
 name: Project documentation
 on:
   push:
-    paths:
-      - 'README.md'
-      - 'project.json'
-      - 'docs/**'
-      - 'scripts/check_project_docs.py'
-      - '.github/workflows/project-docs.yml'
   pull_request:
-    paths:
-      - 'README.md'
-      - 'project.json'
-      - 'docs/**'
-      - 'scripts/check_project_docs.py'
-      - '.github/workflows/project-docs.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,5 +11,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Validate project brief and source references
-        run: python3 scripts/check_project_docs.py
+        run: |
+          python3 scripts/check_project_docs.py
