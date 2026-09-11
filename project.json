@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "jjshay.com",
+  "title": "JJ Shay Public Site Snapshot",
+  "category": "Portfolio and knowledge",
+  "summary": "A professional profile needs a compact way to present experience, recommendations, and research.",
+  "status": "Source available; runtime not revalidated in this documentation review",
+  "visibility": "public",
+  "reviewed_on": "2026-09-11",
+  "reviewed_commit": "3d29b934211bcb4b4a7a209ea986e058b419e10e",
+  "architecture": "Static landing page \u2192 recommendation and report views \u2192 contact or sharing actions.",
+  "evidence": [
+    {
+      "path": "index.html",
+      "role": "Application entry point, interface, or integration boundary."
+    }
+  ],
+  "validation": "Repository tree and referenced source reviewed. Existing application tests, hosted deployments, paid providers, and external mutations were not re-run in this documentation review.",
+  "limitations": "A single-page implementation is easy to host; this public snapshot may differ from the newer app-hub repository.",
+  "next_improvement": "Keep this historical public snapshot labeled and use jjshay-website for current app-hub implementation discussions.",
+  "related_repositories": [
+    "jjshay",
+    "jjshay-website"
+  ]
+}

@@ -1,5 +1,10 @@
 # jjshay.com
 
+<!-- portfolio-navigation:start -->
+[Project brief](docs/PROJECT_BRIEF.md) · [Structured project record](project.json) · [Portfolio](https://github.com/jjshay)
+
+<!-- portfolio-navigation:end -->
+
 A personal portfolio and AI insights platform for John (JJ) Shay - AI Strategist & M&A Executive.
 
 ## Philosophy
